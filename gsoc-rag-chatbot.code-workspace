@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "gsoc-rag-chatbot",
+			"path": "."
+		},
+		{
+			"name": "GSoC Data",
+			"path": "../../Desktop/GSoC Data"
+		}
+	],
+	"settings": {}
+}

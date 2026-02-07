@@ -1,0 +1,2 @@
+qdrant_client==1.16.2
+sentence_transformers==5.2.2
