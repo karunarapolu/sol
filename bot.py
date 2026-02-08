@@ -14,7 +14,7 @@ client = QdrantClient(
     api_key=os.getenv("QDRANT_API_KEY")
 )
 
-gemini_client = Client(api_key="AIzaSyCpoepXGny0m-kqNg2XciMImLo735Mnq30")
+gemini_client = Client(api_key="")
 response = gemini_client.models.generate_content(
     model='gemini-2.5-flash',
     contents='Analyze this text and summarize it: ...'
