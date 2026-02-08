@@ -1,15 +1,36 @@
 import os
 import streamlit as st
+
 from qdrant_client import QdrantClient
 from sentence_transformers import SentenceTransformer
 
-from langchain.prompts import PromptTemplate
-from langchain.chains import RetrievalQA
-from langchain_community.vectorstores import Qdrant
+from langchain_qdrant import QdrantVectorStore
 from langchain_google_genai import ChatGoogleGenerativeAI
 
+from langchain_core.prompts import PromptTemplate
+from langchain_core.runnables import RunnablePassthrough
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.embeddings import Embeddings
 
+
+# ======================================================
+# SentenceTransformer → LangChain embedding wrapper
+# ======================================================
+
+class SentenceTransformerEmbeddings(Embeddings):
+    def __init__(self, model_name: str):
+        self.model = SentenceTransformer(model_name)
+
+    def embed_documents(self, texts):
+        return self.model.encode(texts, convert_to_numpy=True).tolist()
+
+    def embed_query(self, text):
+        return self.model.encode(text, convert_to_numpy=True).tolist()
+
+
+# ======================================================
 # Environment checks
+# ======================================================
 
 if not os.getenv("QDRANT_API_KEY"):
     st.error("QDRANT_API_KEY not set")
@@ -20,136 +41,142 @@ if not os.getenv("GEMINI_API_KEY"):
     st.stop()
 
 
+# ======================================================
 # Streamlit UI
+# ======================================================
 
 st.set_page_config(page_title="GSoC RAG Chatbot", layout="centered")
-st.title("GSoC RAG Chatbot (Strict, No Hallucinations)")
+st.title("GSoC RAG Chatbot (Strict · No Hallucinations)")
 
 user_query = st.text_input("Ask a GSoC-related question:")
 
 
-# Embedding model
+# ======================================================
+# Embeddings (MUST match indexing)
+# ======================================================
 
-embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
+embedding_model = SentenceTransformerEmbeddings(
+    model_name="all-MiniLM-L6-v2"
+)
 
 
-# Qdrant Client
+# ======================================================
+# Qdrant client
+# ======================================================
 
 qdrant_client = QdrantClient(
     url="https://43935042-f3be-4bcb-8c25-5f9417548ccc.europe-west3-0.gcp.cloud.qdrant.io",
-    api_key=os.getenv("QDRANT_API_KEY")
+    api_key=os.getenv("QDRANT_API_KEY"),
 )
 
 
-# Vector Store (LangChain wrapper)
+# ======================================================
+# Vector store
+# ======================================================
 
-vector_store = Qdrant(
+vector_store = QdrantVectorStore(
     client=qdrant_client,
     collection_name="GSoC_Data",
-    embedding=embedding_model
+    embedding=embedding_model,
+    content_payload_key="text"
 )
 
-retriever = vector_store.as_retriever(
-    search_kwargs={"k": 5}
-)
+retriever = vector_store.as_retriever(search_kwargs={"k": 5})
 
 
-# Gemini LLM (LangChain wrapper)
+# ======================================================
+# Gemini LLM
+# ======================================================
 
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-flash",
     temperature=0,
-    google_api_key=os.getenv("GEMINI_API_KEY")
+    google_api_key="GEMINI_API_KEY",
 )
 
 
-# Strict No-Hallucination Prompt
+# ======================================================
+# Strict no-hallucination prompt
+# ======================================================
 
 prompt_template = """
 You are a retrieval-augmented chatbot specialized in Google Summer of Code (GSoC).
-You MUST operate in a strictly grounded mode.
 
 CRITICAL RULE:
 You are ONLY allowed to use information explicitly present in the retrieved context.
-If the answer is not fully supported by the context, you MUST say so clearly.
-DO NOT guess, infer, assume, extrapolate, or use prior knowledge.
+If the answer is not fully supported by the context, you MUST say so.
 
-Follow these rules without exception:
+Rules:
+- No guessing
+- No assumptions
+- No external knowledge
+- No filling gaps
 
-1. Zero Hallucination Policy:
-   - Do NOT add facts, examples, explanations, or interpretations not present in the context.
-   - Do NOT combine partial information to form new conclusions.
-   - Do NOT fill gaps with general GSoC knowledge.
+If insufficient context exists, respond EXACTLY with:
+"The provided context does not contain sufficient information to answer this question."
 
-2. Allowed Scope ONLY:
-   Answer questions strictly related to:
-   - GSoC organizations listed in the context
-   - GSoC project descriptions present in the context
-   - Required skills or technologies explicitly mentioned
-   - Contribution or application details explicitly stated
+If off-topic, respond EXACTLY with:
+"This question is outside the scope of this GSoC-focused chatbot."
 
-3. Insufficient Context Handling:
-   If the retrieved context does not contain enough information to answer the question,
-   respond EXACTLY with:
-   "The provided context does not contain sufficient information to answer this question."
-
-4. Off-Topic Queries:
-   If the question is unrelated to GSoC or open-source projects,
-   respond EXACTLY with:
-   "This question is outside the scope of this GSoC-focused chatbot."
-
-5. No External Knowledge:
-   - Do NOT rely on training data, memory, or general understanding.
-   - Treat the retrieved context as the ONLY source of truth.
-
-6. Precision Over Helpfulness:
-   - Accuracy is more important than completeness.
-
-7. Response Style:
-   - Use concise, factual sentences.
-   - No introductions, no conclusions, no sign-offs.
-
-Retrieved Context:
+Context:
 {context}
 
-User Question:
+Question:
 {question}
 
 Answer:
 """
 
-custom_prompt = PromptTemplate(
+prompt = PromptTemplate(
     template=prompt_template,
-    input_variables=["context", "question"]
+    input_variables=["context", "question"],
 )
 
 
-# RetrievalQA Chain
+# ======================================================
+# Helper to format docs
+# ======================================================
 
-rag_chain = RetrievalQA.from_chain_type(
-    llm=llm,
-    chain_type="stuff",
-    retriever=retriever,
-    chain_type_kwargs={"prompt": custom_prompt},
-    return_source_documents=True
+def format_docs(docs):
+    return "\n\n".join(doc.page_content for doc in docs)
+
+
+# ======================================================
+# LCEL RAG chain
+# ======================================================
+
+rag_chain = (
+    {
+        "context": retriever | format_docs,
+        "question": RunnablePassthrough(),
+    }
+    | prompt
+    | llm
+    | StrOutputParser()
 )
 
 
-# Query Execution
+# ======================================================
+# Query execution
+# ======================================================
 
 if user_query:
     with st.spinner("Retrieving grounded answer..."):
-        result = rag_chain({"query": user_query})
+        docs = retriever.invoke(user_query)
+        answer = rag_chain.invoke(user_query)
 
-    if not result["source_documents"]:
+    if not docs:
         st.write(
             "The provided context does not contain sufficient information to answer this question."
         )
     else:
         st.subheader("Answer")
-        st.write(result["result"])
+        st.write(answer)
 
         with st.expander("Retrieved Context (Debug)"):
-            for i, doc in enumerate(result["source_documents"], start=1):
+            for i, doc in enumerate(docs, start=1):
                 st.markdown(f"**Chunk {i}:**")
                 st.write(doc.page_content)
+
+
+qdrant_client.close()
