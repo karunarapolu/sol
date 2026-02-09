@@ -13,7 +13,7 @@ query = "NumFocus 2025"
 query_vector = model.encode(query).tolist()
 
 results = client.query_points(
-    collection_name="GSoC_Data",
+    collection_name="GSoC_Data1",
     query=query_vector,
     with_payload=True,
     limit=5

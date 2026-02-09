@@ -76,7 +76,7 @@ qdrant_client = QdrantClient(
 
 vector_store = QdrantVectorStore(
     client=qdrant_client,
-    collection_name="GSoC_Data",
+    collection_name="GSoC_Data1",
     embedding=embedding_model,
     content_payload_key="text"
 )
@@ -91,7 +91,7 @@ retriever = vector_store.as_retriever(search_kwargs={"k": 5})
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-flash",
     temperature=0,
-    google_api_key="GEMINI_API_KEY",
+    google_api_key=os.getenv("GOOGLE_API_KEY"),
 )
 
 

@@ -1,2 +1,6 @@
+langchain_core==1.2.9
+langchain_google_genai==4.2.0
+langchain_qdrant==1.1.0
 qdrant_client==1.16.2
 sentence_transformers==5.2.2
+streamlit==1.54.0
