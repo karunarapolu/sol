@@ -1,6 +1,6 @@
 import os
 import streamlit as st
-
+import sqlite3
 from qdrant_client import QdrantClient
 from sentence_transformers import SentenceTransformer
 
@@ -14,6 +14,16 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.embeddings import Embeddings
 
 from rank_bm25 import BM25Okapi
+import uuid
+
+
+# ======================================================
+# Initialize conversation
+# ======================================================
+
+if "conversation_id" not in st.session_state:
+    st.session_state.conversation_id = str(uuid.uuid4())
+    st.session_state.title = "New Chat"
 
 
 # ======================================================
@@ -48,10 +58,11 @@ if not os.getenv("GEMINI_API_KEY"):
 # Streamlit UI
 # ======================================================
 
-st.set_page_config(page_title="GSoC Hybrid RAG Chatbot", layout="centered")
-st.title("GSoC Hybrid RAG Chatbot (Dense + BM25 Rerank)")
+st.set_page_config(page_title="GSoC Hybrid RAG Chatbot", layout="wide")
+st.title("GSoC Hybrid RAG Chatbot")
 
-user_query = st.text_input("Ask a GSoC-related question:")
+# ✅ FIX: define user_query
+user_query = st.chat_input("Ask your GSoC question...")
 
 
 # ======================================================
@@ -86,12 +97,14 @@ vector_store = QdrantVectorStore(
 
 retriever = vector_store.as_retriever(search_kwargs={"k": 20})
 
+if user_query and st.session_state.title == "New Chat":
+    st.session_state.title = user_query[:50]
+
 
 # ======================================================
 # BM25 keyword search setup
 # ======================================================
 
-# Fetch all documents once (for BM25 corpus)
 all_docs = qdrant_client.scroll(
     collection_name="GSoC_Data1",
     limit=10000
@@ -103,31 +116,25 @@ bm25 = BM25Okapi(tokenized_corpus)
 
 
 def hybrid_search(query, top_k=10):
-    # Dense retrieval
     dense_docs = retriever.invoke(query)
 
-    # Sparse retrieval (BM25)
     tokenized_query = query.split()
     bm25_scores = bm25.get_scores(tokenized_query)
 
-    # Attach BM25 scores to docs
     bm25_results = [
         {"text": corpus[i], "score": bm25_scores[i]}
         for i in range(len(corpus))
     ]
     bm25_results = sorted(bm25_results, key=lambda x: x["score"], reverse=True)[:top_k]
 
-    # Fusion rerank: combine dense + BM25
     combined = []
     for doc in dense_docs:
         text = doc.page_content
         bm25_score = next((r["score"] for r in bm25_results if r["text"] == text), 0)
         combined.append((text, bm25_score))
 
-    # Sort by BM25 score (rerank fusion)
     combined_sorted = sorted(combined, key=lambda x: x[1], reverse=True)
 
-    # Return top reranked docs
     return [doc for doc, _ in combined_sorted[:top_k]]
 
 
@@ -143,40 +150,42 @@ llm = ChatGoogleGenerativeAI(
 
 
 # ======================================================
-# Strict no-hallucination prompt
+# Prompt
 # ======================================================
 
 prompt_template = """
 You are a retrieval-augmented chatbot specialized in Google Summer of Code (GSoC).
 
 CRITICAL RULE:
-You must ONLY use information explicitly present in the retrieved context. 
-If the answer is not fully supported by the context, you MUST say so.
+You must ONLY use information explicitly present in the retrieved context or the provided conversation history. 
+If the answer is not fully supported by either, you MUST say so.
 
 Rules:
 - No guessing
 - No assumptions
-- No external knowledge
+- No external knowledge beyond context/history
 - No filling gaps
-- Always ground every part of your answer in the provided context
+- Always ground every part of your answer in the provided context and history
 
 Response requirements:
-- Provide a clear, complete, and detailed answer that includes ALL relevant information from the context.
-- Organize the answer logically, covering every important point mentioned in the retrieved context.
+- Provide a clear, complete, and detailed answer that includes ALL relevant information from the context and history.
+- Organize the answer logically, covering every important point mentioned.
 - Use concise, professional language that is accurate and easy to follow.
 - If multiple pieces of relevant information exist, synthesize them into a cohesive answer rather than listing them separately.
 - Highlight key details (such as dates, eligibility criteria, processes, or examples) so the user receives a comprehensive response.
 - When possible, structure the answer into sections or bullet points for readability.
 
 Fallbacks:
-- If insufficient context exists, respond EXACTLY with:
-  "The provided context does not contain sufficient information to answer this question. Please try rephrasing your query with more specific details. For example: 'What were the eligibility rules for GSoC 2023?' or 'How does the student application process work in GSoC?'"
+- If insufficient context/history exists, respond with:
+  "The provided context and history do not contain sufficient information to answer this question. Please try rephrasing your query with more specific details.
+When falling back, always suggest at least two improved versions of the user’s question that would yield better results.Ensure suggestions are specific, contextual 
+and make the question more broad to increase the scope of search.
 - If the question is off-topic, respond EXACTLY with:
-  "This question is outside the scope of this GSoC-focused chatbot. Please ask a question related to Google Summer of Code. For example: 'What is the role of mentors in GSoC?' or 'How are organizations selected for GSoC?'"
+  "This question is outside the scope of this GSoC-focused chatbot. Please ask a question related to Google Summer of Code.
 
-Additionally:
-- When falling back, always suggest at least two improved versions of the user’s question that would yield better results.
-- Ensure suggestions are specific, contextual, and aligned with GSoC topics.
+
+Conversation history:
+{history}
 
 Context:
 {context}
@@ -185,43 +194,90 @@ Question:
 {question}
 
 Answer:
-
 """
 
 prompt = PromptTemplate(
     template=prompt_template,
-    input_variables=["context", "question"],
+    input_variables=["context", "question", "history"],
 )
 
 
 # ======================================================
-# Helper to format docs
+# Helpers
 # ======================================================
 
 def format_docs(docs):
     return "\n\n".join(docs)
 
 
-# ======================================================
-# LCEL RAG chain
-# ======================================================
-hybrid_search_runnable = RunnableLambda(lambda q: hybrid_search(q)) 
-format_docs_runnable = RunnableLambda(lambda docs: format_docs(docs))
+def get_recent_history(conv_id, n=10):
+    conn = sqlite3.connect("chat_history.db")
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT user_message, bot_response FROM chat_history WHERE conversation_id=? ORDER BY id ASC LIMIT ?",
+        (conv_id, n)
+    )
+    rows = cursor.fetchall()
+    conn.close()
+    history = "\n".join([f"User: {u}\nBot: {b}" for u, b in rows])
+    return history
 
+def get_history_safe(_):
+    conv_id = st.session_state.get("conversation_id", "")
+    return get_recent_history(conv_id)
+
+
+# ======================================================
+# RAG Chain
+# ======================================================
+
+hybrid_search_runnable = RunnableLambda(lambda q: hybrid_search(q))
+format_docs_runnable = RunnableLambda(lambda docs: format_docs(docs))
 
 rag_chain = (
     {
         "context": hybrid_search_runnable | format_docs_runnable,
         "question": RunnablePassthrough(),
+        # ✅ FIX: use current conversation id
+        "history": RunnableLambda(get_history_safe)
     }
     | prompt
     | llm
     | StrOutputParser()
 )
 
+# ======================================================
+# Ensure Session State Exists
+# ======================================================
+
+st.session_state.setdefault("conversation_id", str(uuid.uuid4()))
+st.session_state.setdefault("title", "New Chat")
+
 
 # ======================================================
-# Query execution
+# Sidebar Chats
+# ======================================================
+
+st.sidebar.title("Chats")
+
+conn = sqlite3.connect("chat_history.db")
+cursor = conn.cursor()
+cursor.execute("SELECT DISTINCT conversation_id, title FROM chat_history ORDER BY timestamp DESC")
+conversations = cursor.fetchall()
+conn.close()
+
+for conv_id, title in conversations:
+    if st.sidebar.button(title, key=f"chat_{conv_id}"):
+        st.session_state.conversation_id = conv_id
+        st.session_state.title = title
+        st.rerun()
+
+
+
+
+
+# ======================================================
+# Chat execution (RUN FIRST)
 # ======================================================
 
 if user_query:
@@ -229,18 +285,64 @@ if user_query:
         docs = retriever.invoke(user_query)
         answer = rag_chain.invoke(user_query)
 
-    if not docs:
-        st.write(
-            "The provided context does not contain sufficient information to answer this question."
-        )
-    else:
-        st.subheader("Answer")
-        st.write(answer)
+    if st.session_state.title == "New Chat":
+        st.session_state.title = user_query[:50]
 
-        with st.expander("Retrieved Context (Debug)"):
-            for i, doc in enumerate(docs, start=1):
-                st.markdown(f"**Chunk {i}:**")
-                st.write(doc.page_content)
+    conn = sqlite3.connect("chat_history.db")
+    cursor = conn.cursor()
+    cursor.execute(
+        "INSERT INTO chat_history (conversation_id, title, user_message, bot_response) VALUES (?, ?, ?, ?)",
+        (st.session_state.conversation_id, st.session_state.title, user_query, answer)
+    )
+    conn.commit()
+    conn.close()
 
+    # 🔴 CRITICAL FIX — forces rerun so history shows
+    st.rerun()
+
+
+# ======================================================
+# Continuous Chat Rendering (RUN AFTER EXECUTION)
+# ======================================================
+
+if "conversation_id" in st.session_state:
+    conn = sqlite3.connect("chat_history.db")
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT user_message, bot_response FROM chat_history WHERE conversation_id=? ORDER BY id ASC",
+        (st.session_state.conversation_id,)
+    )
+    rows = cursor.fetchall()
+    conn.close()
+
+    for row in rows:
+        with st.chat_message("user"):
+            st.markdown(row[0])
+        with st.chat_message("assistant"):
+            st.markdown(row[1])
+
+
+# ======================================================
+# Sidebar Controls
+# ======================================================
+
+if st.sidebar.button("Clear History"):
+    conn = sqlite3.connect("chat_history.db")
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM chat_history")
+    conn.commit()
+    conn.close()
+    st.sidebar.success("Chat history cleared!")
+    st.rerun()
+
+if st.sidebar.button("New Chat"):
+    st.session_state.conversation_id = str(uuid.uuid4())
+    st.session_state.title = "New Chat"
+    st.rerun()
+
+
+# ======================================================
+# Close Qdrant
+# ======================================================
 
 qdrant_client.close()
