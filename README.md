@@ -91,9 +91,12 @@ streamlit run bot.py
 7. Persists conversation rows in `chat_history.db`.
 
 ## Screenshots
-![alt text](<Images\Screenshot1.jpeg>)
+
+![Image](<Images/Screenshot1.jpeg>)
+
 ---
-![alt text](<Images\Screenshot2.jpeg>)
+
+![Image](<Images/Screenshot2.jpeg>)
 
 ## Security & privacy notes
 
