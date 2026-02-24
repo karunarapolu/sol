@@ -58,10 +58,10 @@ if not os.getenv("GEMINI_API_KEY"):
 # Streamlit UI
 # ======================================================
 
-st.set_page_config(page_title="GSoC Hybrid RAG Chatbot", layout="wide")
-st.title("GSoC Hybrid RAG Chatbot")
+st.set_page_config(page_title="Sol", layout="wide")
+st.title("Sol - GSoC RAG Chatbot")
 
-# ✅ FIX: define user_query
+#FIX: define user_query
 user_query = st.chat_input("Ask your GSoC question...")
 
 
@@ -169,6 +169,7 @@ Rules:
 
 Response requirements:
 - Provide a clear, complete, and detailed answer that includes ALL relevant information from the context and history.
+-pay attention to the history and refer to the history,respond with respect to the history when there is one.
 - Organize the answer logically, covering every important point mentioned.
 - Use concise, professional language that is accurate and easy to follow.
 - If multiple pieces of relevant information exist, synthesize them into a cohesive answer rather than listing them separately.
@@ -226,19 +227,22 @@ def get_history_safe(_):
     conv_id = st.session_state.get("conversation_id", "")
     return get_recent_history(conv_id)
 
-
 # ======================================================
 # RAG Chain
 # ======================================================
+def hybrid_with_history(q):
+    history = get_history_safe(None)
+    combined_query = f"{history}\nUser question: {q}"
+    return hybrid_search(combined_query)
 
-hybrid_search_runnable = RunnableLambda(lambda q: hybrid_search(q))
+hybrid_search_runnable = RunnableLambda(hybrid_with_history)
 format_docs_runnable = RunnableLambda(lambda docs: format_docs(docs))
 
 rag_chain = (
     {
         "context": hybrid_search_runnable | format_docs_runnable,
         "question": RunnablePassthrough(),
-        # ✅ FIX: use current conversation id
+        # FIX: use current conversation id
         "history": RunnableLambda(get_history_safe)
     }
     | prompt
@@ -250,8 +254,11 @@ rag_chain = (
 # Ensure Session State Exists
 # ======================================================
 
-st.session_state.setdefault("conversation_id", str(uuid.uuid4()))
-st.session_state.setdefault("title", "New Chat")
+if "conversation_id" not in st.session_state:
+    st.session_state.conversation_id = str(uuid.uuid4())
+
+if "title" not in st.session_state:
+    st.session_state.title = "New Chat"
 
 
 # ======================================================
@@ -284,6 +291,9 @@ if user_query:
     with st.spinner("Retrieving grounded answer..."):
         docs = retriever.invoke(user_query)
         answer = rag_chain.invoke(user_query)
+        history = get_history_safe(None)
+
+        print("\nHISTORY:\n", history)
 
     if st.session_state.title == "New Chat":
         st.session_state.title = user_query[:50]
@@ -297,7 +307,7 @@ if user_query:
     conn.commit()
     conn.close()
 
-    # 🔴 CRITICAL FIX — forces rerun so history shows
+    #CRITICAL FIX — forces rerun so history shows
     st.rerun()
 
 
