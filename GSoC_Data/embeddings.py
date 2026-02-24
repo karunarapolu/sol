@@ -12,7 +12,7 @@ from sentence_transformers import SentenceTransformer
 # CONFIG
 # -------------------------
 COLLECTION_NAME = "GSoC_Data1"
-QDRANT_URL = "https://43935042-f3be-4bcb-8c25-5f9417548ccc.europe-west3-0.gcp.cloud.qdrant.io"
+QDRANT_URL = os.getenv("QDRANT_URL")
 
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
 if not QDRANT_API_KEY:
