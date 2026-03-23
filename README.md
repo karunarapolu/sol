@@ -25,6 +25,7 @@
 - Vector DB: Qdrant (`qdrant-client`)
 - Embeddings: SentenceTransformers (`all-MiniLM-L6-v2`) via a small LangChain `Embeddings` wrapper
 - Sparse retrieval: BM25 (`rank_bm25`)
+- Dense retrieval: Semantic Search
 - Orchestration: LangChain-style runnables & prompts
 - LLM: Google Gemini via `langchain_google_genai.ChatGoogleGenerativeAI`
 - Persistence: SQLite for chat history
