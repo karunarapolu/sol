@@ -17,6 +17,7 @@
 - [Security & privacy notes](#security--privacy-notes)
 - [Future Improvements](#future-improvements)
 - [License](#license)
+- [Live Deployment Link](#live-deployment-link)
 
 ## Tech Stack
 
@@ -30,7 +31,7 @@
 - LLM: Google Gemini via `langchain_google_genai.ChatGoogleGenerativeAI`
 - Persistence: SQLite for chat history
 
-## Project structure (key files)
+## Project structure
 
 - `bot.py` — main Streamlit app and entire RAG flow (retriever, hybrid search, prompt, LLM call, persistence)
 - `GSoC_Data/` — dataset + ingestion helpers (embeddings, CSVs)
@@ -113,3 +114,6 @@ streamlit run bot.py
 ## License
 
 MIT — see `LICENSE`.
+
+## Live Deployment Link
+https://solchat.streamlit.app/
