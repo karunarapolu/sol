@@ -334,19 +334,19 @@ if "title" not in st.session_state:
 # Sidebar Chats
 # ======================================================
 
-st.sidebar.title("Chats")
+#st.sidebar.title("Chats")
 
-conn = sqlite3.connect("chat_history.db")
-cursor = conn.cursor()
-cursor.execute("SELECT DISTINCT conversation_id, title FROM chat_history ORDER BY timestamp DESC")
-conversations = cursor.fetchall()
-conn.close()
+#conn = sqlite3.connect("chat_history.db")
+#cursor = conn.cursor()
+#cursor.execute("SELECT DISTINCT conversation_id, title FROM chat_history ORDER BY timestamp DESC")
+#conversations = cursor.fetchall()
+#conn.close()
 
-for conv_id, title in conversations:
-    if st.sidebar.button(title, key=f"chat_{conv_id}"):
-        st.session_state.conversation_id = conv_id
-        st.session_state.title = title
-        st.rerun()
+#for conv_id, title in conversations:
+#    if st.sidebar.button(title, key=f"chat_{conv_id}"):
+#        st.session_state.conversation_id = conv_id
+#        st.session_state.title = title
+#        st.rerun()
 
 
 
@@ -405,19 +405,19 @@ if "conversation_id" in st.session_state:
 # Sidebar Controls
 # ======================================================
 
-if st.sidebar.button("Clear History"):
-    conn = sqlite3.connect("chat_history.db")
-    cursor = conn.cursor()
-    cursor.execute("DELETE FROM chat_history")
-    conn.commit()
-    conn.close()
-    st.sidebar.success("Chat history cleared!")
-    st.rerun()
+#if st.sidebar.button("Clear History"):
+#    conn = sqlite3.connect("chat_history.db")
+#    cursor = conn.cursor()
+#    cursor.execute("DELETE FROM chat_history")
+#    conn.commit()
+#    conn.close()
+#    st.sidebar.success("Chat history cleared!")
+#    st.rerun()
 
-if st.sidebar.button("New Chat"):
-    st.session_state.conversation_id = str(uuid.uuid4())
-    st.session_state.title = "New Chat"
-    st.rerun()
+#if st.sidebar.button("New Chat"):
+#    st.session_state.conversation_id = str(uuid.uuid4())
+#    st.session_state.title = "New Chat"
+#    st.rerun()
 
 
 # ======================================================
