@@ -12,18 +12,42 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_core.runnables import RunnableLambda
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.embeddings import Embeddings
+from google.api_core.exceptions import ResourceExhausted
 
 from rank_bm25 import BM25Okapi
 import uuid
 
 
 # ======================================================
-# Initialize conversation
+# Initialize conversation + Gemini key/token state
 # ======================================================
 
-if "conversation_id" not in st.session_state:
-    st.session_state.conversation_id = str(uuid.uuid4())
-    st.session_state.title = "New Chat"
+MAX_TOKENS_DEFAULT = 100_000
+GET_KEY_URL = "https://aistudio.google.com/app/apikey"
+GET_KEY_LINK_MD = f"Don't have an API key? [Get one here]({GET_KEY_URL})"
+
+_defaults = {
+    "conversation_id": str(uuid.uuid4()),
+    "title": "New Chat",
+    "gemini_api_key": os.getenv("GEMINI_API_KEY"),
+    "using_env_key": True,
+    "limit_reached": False,
+}
+for _key, _value in _defaults.items():
+    if _key not in st.session_state:
+        st.session_state[_key] = _value
+
+
+def render_key_form(location, key_prefix):
+    with location.form(key=f"{key_prefix}_key_form"):
+        new_key = st.text_input("Enter your Gemini API key", type="password")
+        st.caption(GET_KEY_LINK_MD)
+        submitted = st.form_submit_button("Save & Continue")
+        if submitted and new_key:
+            st.session_state.gemini_api_key = new_key
+            st.session_state.using_env_key = False
+            st.session_state.limit_reached = False
+            st.rerun()
 
 
 # ======================================================
@@ -49,8 +73,15 @@ if not os.getenv("QDRANT_API_KEY"):
     st.error("QDRANT_API_KEY not set")
     st.stop()
 
-if not os.getenv("GEMINI_API_KEY"):
-    st.error("GEMINI_API_KEY not set")
+# No env key AND no user-submitted key yet -> first-run gate
+if not st.session_state.gemini_api_key:
+    st.set_page_config(page_title="Sol", layout="wide")
+    st.title("Sol - GSoC RAG Chatbot")
+    _, center, _ = st.columns([1, 2, 1])
+    with center:
+        with st.container(border=True):
+            st.subheader("Enter your Gemini API key to get started")
+            render_key_form(st, "welcome")
     st.stop()
 
 
@@ -63,6 +94,26 @@ st.title("Sol - GSoC RAG Chatbot")
 
 #FIX: define user_query
 user_query = st.chat_input("Ask your GSoC question...")
+
+# ======================================================
+# Sidebar: key status, token usage, change-key control
+# ======================================================
+
+with st.sidebar:
+    st.subheader("API Key")
+    st.info("Using System Free Key" if st.session_state.using_env_key else "Using Custom Key")
+    with st.expander("Change / Update API Key"):
+        render_key_form(st, "sidebar")
+
+
+# ======================================================
+# Quota banner
+# ======================================================
+
+if st.session_state.limit_reached:
+    st.warning("Free Tier API quota reached. Please enter your own Gemini API key to continue.")
+    render_key_form(st, "banner")
+    st.stop()
 
 
 # ======================================================
@@ -81,6 +132,7 @@ embedding_model = SentenceTransformerEmbeddings(
 qdrant_client = QdrantClient(
     url=os.getenv("QDRANT_URL"),
     api_key=os.getenv("QDRANT_API_KEY"),
+    check_compatibility=False
 )
 
 
@@ -92,7 +144,8 @@ vector_store = QdrantVectorStore(
     client=qdrant_client,
     collection_name="GSoC_Data1",
     embedding=embedding_model,
-    content_payload_key="text"
+    content_payload_key="text",
+    validate_collection_config=False
 )
 
 retriever = vector_store.as_retriever(search_kwargs={"k": 20})
@@ -143,9 +196,9 @@ def hybrid_search(query, top_k=10):
 # ======================================================
 
 llm = ChatGoogleGenerativeAI(
-    model="gemini-2.5-flash",
+    model="gemini-3.6-flash",
     temperature=0,
-    google_api_key=os.getenv("GEMINI_API_KEY"),
+    google_api_key=st.session_state.gemini_api_key,
 )
 
 
@@ -250,6 +303,22 @@ rag_chain = (
     | StrOutputParser()
 )
 
+def run_rag_chain(query: str):
+    """Invoke the chain, catch 429/quota errors, update token counter
+    from the model's own usage_metadata."""
+    try:
+        message = rag_chain.invoke(query)
+    except ResourceExhausted:
+        st.session_state.limit_reached = True
+        st.rerun()
+    except Exception as e:
+        if "429" in str(e) or "quota" in str(e).lower():
+            st.session_state.limit_reached = True
+            st.rerun()
+        raise
+
+    return message
+
 # ======================================================
 # Ensure Session State Exists
 # ======================================================
@@ -290,7 +359,7 @@ for conv_id, title in conversations:
 if user_query:
     with st.spinner("Retrieving grounded answer..."):
         docs = retriever.invoke(user_query)
-        answer = rag_chain.invoke(user_query)
+        answer = run_rag_chain(user_query)
         history = get_history_safe(None)
 
         print("\nHISTORY:\n", history)
