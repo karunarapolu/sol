@@ -1,0 +1,330 @@
+{
+  "question": "who is AdityaGupta256? what did he work on",
+  "output": "
+========== DENSE RETRIEVAL ==========
+
+--- DENSE CHUNK 1 ---
+gsoc_2021_projects.csv | Row 1125: organization_name=The Palisadoes Foundation | organization_url=http://www.palisadoes.org/ | category=Social and communication | num_projects=5 | irc_channel=http://www.palisadoes.org/gsoc/ | contact_email=mailto:info@palisadoes.org | technologies=javascript, mongodb, node.js, flutter, graphql | topics=web development, cloud computing, social good, mobile apps, social impact | project_title=GSoC’ 21: The Palisadoes Foundation | project_short_description=Talawa is an open source project helping people with same interest to collaborate together. It deals with managing the members of the group via help... | project_description=<p>Talawa is an open source project helping people with same interest to collaborate together. It deals with managing the members of the group via help of Talawa admin panal. Tawala appilcation helps members to join organizations of their interest via organization's Tawala-api hosted URL.</p>
+<h4>Talawa Feature:</h4>
+<ul>
+<li>[x] International language support.</li>
+<li>[x] Theming</li>
+<li>[x] Messaging</li>
+<li>[x] Organization joining</li>
+<li>[x] Organization switching on same server, feeds, event creation/registration.</li>
+<li>[x] Notifications</li>
+<li>[x] Verified account creation</li>
+<li>[x] Account password recovery</li>
+<li>[x] Signup from google and facebook</li>
+<li>[x] Responsive Layout</li>
+</ul>
+ | student_name=Ritik Kumar Srivastava | project_code_url=https://gist.github.com/CyberWake/eedfbdff1822dc294f48d0c6c8b5cd03 | project_url=https://summerofcode.withgoogle.com/archive/2021/projects/4749161534062592/
+Metadata: {'_id': 6515, '_collection_name': 'GSoC_Data1'}
+
+--- DENSE CHUNK 2 ---
+GSoC-2024-projects.csv | Row 52: title=Creating a blockchain based community funding platform | contributor_name=Aditya Bhattad | code_link=https://gist.github.com/adityabhattad2021/74fbb611492b60b2df4c55add3ea7a49 | mentors=Bruno, jddeep, hackeramitkumar, Abanda Ludovic, Kumar Harsh, Chandan S Gowda, Harish Dendukuri, Prarabdh Shukla | organization=AOSSIE | technologies=postgresql, typescript, NextJs, Solidity, Ethereum, CronJob | topics=blockchain, Voting | project_details=This project aims to develop a blockchain-based funding platform. At its core, the platform utilizes a proportionality formula to determine the amount of funding each proposal will receive. It also allows the creation of secure funding vaults and enabling users to submit proposals for funding tokens. User experience is a key focus of the platform, with features like stepper based forms designed to enhance engagement and accessibility. The platform uses session-based authentication to ensure secure access for the users. It also includes a personalized \"My Activity\" page which provides each user with a personalized interface to track their interactions and contributions within the platform. Users can create dedicated spaces for creating multiple funding vaults tailored to specific communities. This feature allows for more targeted and relevant funding opportunities. | url=https://summerofcode.withgoogle.com/programs/2024/projects/BTi5ly6d
+Metadata: {'_id': 6646, '_collection_name': 'GSoC_Data1'}
+
+--- DENSE CHUNK 3 ---
+GSoC-2023-projects.csv | Row 555: title=Hybrid: Build User Portal For Talawa | contributor_name=Noble Mittal | code_link=https://beingnoble03.hashnode.dev/gsoc23-project-report-for-talawa-user-portal | mentors=Peter Harrison, Md Noman Khan, Eva Sharma | organization=The Palisadoes Foundation | technologies=javascript, react, graphql, redux, Material UI | topics=web | project_details=Currently, Talawa misses a web-app for regular users. Creating a User Portal for regular users, makes Talawa accessible to an even larger audience. User can send direct messages, group messages, view/create/delete posts, create/view/delete events through the User Portal. The user portal will be created using Material UI. | url=https://summerofcode.withgoogle.com/programs/2023/projects/tBhcZ1oT
+Metadata: {'_id': 2796, '_collection_name': 'GSoC_Data1'}
+
+--- DENSE CHUNK 4 ---
+GSoC-2022-projects.csv | Row 706: title=Build Access and Entitlements into a Hosted Version of Augur | contributor_name=Priya Srivastava | code_link=https://github.com/Priya730/GSoC22/blob/main/README.md | mentors=CHAOSS Project, Klumb, Andrew Brain | organization=CHAOSS | technologies=python, postgresql, flask, sql, sqlalchemy | topics=authorisation | project_details=The aim of the project is to build login and access for users. Augur is a software suite for collecting and measuring structured data about free and open-source software (FOSS) communities. The project will help the users to login using CLI and API. The project aims at creating login feature for users. This is implemented as CLI subcommands and through an API. Using these, user will be added to the database. With login functionality, the user experience will be improved. The project focused to add and improve access and authorisation functionalities for hosted version of augur (augur_view). As a future development, the new version of Augur- augur-new, will make it possible to install a single instance for CHAOSS Community members to leverage for initial experimentation with CHAOSS metrics. | url=https://summerofcode.withgoogle.com/programs/2022/projects/YNXT2TFX
+Metadata: {'_id': 5042, '_collection_name': 'GSoC_Data1'}
+
+--- DENSE CHUNK 5 ---
+gsoc_2020_projects.csv | Row 662: organization_name=OpenMined | organization_url=http://www.openmined.org | category=Other | num_projects=4 | irc_channel=http://slack.openmined.org | contact_email=mailto:andrew@openmined.org | technologies=deep learning, federated learning, homomorphic encryption, secure multi-party computation, differential privacy | topics=privacy, artificial intelligence | project_title=Performing a security audit on privacy-preserving, distributed learning methodologies running on PyGrid with respect to GDPR requirement. | project_short_description=In order to bridge the gap between industry and  new technology, this project will supply governance models which are relevant to Privacy-Preserving... | project_description=<p>In order to bridge the gap between industry and  new technology, this project will supply governance models which are relevant to Privacy-Preserving Machine Learning. This project in particular will be focusing on recommending an incident response model.</p>
+ | student_name=Afzaal Hussain | project_code_url=https://docs.google.com/document/d/1CSkR1_8zPhfDv04CdoM_JHySjWTudZrj7mpnJUafPiw/edit?usp=sharing | project_url=https://summerofcode.withgoogle.com/archive/2020/projects/6701336747311104/
+Metadata: {'_id': 1796, '_collection_name': 'GSoC_Data1'}
+
+--- DENSE CHUNK 6 ---
+gsoc_2020_projects.csv | Row 632: organization_name=Open Source Robotics Foundation | organization_url=https://www.openrobotics.org/ | category=Programming languages | num_projects=7 | irc_channel=http://wiki.ros.org/Get%20Involved | contact_email=mailto:gsoc@osrfoundation.org | technologies=python, ros, gazebo, c++ | topics=robotics | project_title=Demos for ignition knowledge base | project_short_description=this is my initial proposal introducing myself, ideas and timeline of the project. looking forward to hearing your reply | project_description=<p>this is my initial proposal introducing myself, ideas and timeline of the project. looking forward to hearing your reply</p>
+ | student_name=Mohamed Ahmed Hassan | project_code_url=https://community.gazebosim.org/t/new-ignition-gazebo-demos/613 | project_url=https://summerofcode.withgoogle.com/archive/2020/projects/4804799985352704/
+Metadata: {'_id': 1766, '_collection_name': 'GSoC_Data1'}
+
+--- DENSE CHUNK 7 ---
+gsoc_2019_projects.csv | Row 109: organization_name=Catrobat | organization_url=https://catrobat.org | category=Programming languages | num_projects=9 | contact_email=mailto:contact@catrobat.org | technologies=android, java, swift, symfony | topics=web, app development, visual programming, gaming | project_title=Amaya | project_short_description=Amaya
+Inspired in the \"Awesome Demo Game Project \" idea
+Amaya is a princess that have his kingdom invade and now needs to defeat The Tyrant to... | project_description=<h4>Amaya</h4>
+<h8>Inspired in the \"Awesome Demo Game Project \" idea</h8>
+<p>Amaya is a princess that have his kingdom invade and now needs to defeat The Tyrant to freedom his people. The idea is inspired in <a href=\"https://www.youtube.com/watch?v=UAO2urG23S4\" target=\"_blank\">Hollow Knight</a> game and consists in run, jump and use magic skills to defeat the enemies and the final boss.</p>
+<p>This idea can be used for the \"Coding Tutorial Game\" too.</p>
+ | student_name=Mikhaelle Bueno | project_code_url=https://github.com/Catrobat/Awesome-Demogame/commit/7088527b93760cac01fe84e33c0654f6be5b35ce | project_url=https://summerofcode.withgoogle.com/archive/2019/projects/6612863198691328/
+Metadata: {'_id': 109, '_collection_name': 'GSoC_Data1'}
+
+--- DENSE CHUNK 8 ---
+gsoc_2019_projects.csv | Row 39: organization_name=AOSSIE - Australian Open Source Software Innovation and Education | organization_url=http://aossie.org/ | category=End user applications | num_projects=18 | irc_channel=https://gitter.im/AOSSIE/Lobby | technologies=javascript, android, scala, ios, isabelle proof assistant | topics=machine learning, environment, electronic voting, natural language processing, philosophy | project_title=Agora-web Proposal GSOC 2019 | project_short_description=Agora is a library of data structures and algorithms for counting votes in elections. Agora-web, is a website to conduct online elections.The project... | project_description=<p>Agora is a library of data structures and algorithms for counting votes in elections. Agora-web, is a website to conduct online elections.The project will add Two factor Authentication as an extra layer of security for user's account. Also all the security concerns mentioned in <a href=\"https://civs.cs.cornell.edu/sec_priv.html\" target=\"_blank\">https://civs.cs.cornell.edu/sec_priv.html</a> will be implemented. This project will also build Frontend for agora with good User Interface and Design. Also the new frontend will implement lazy loading and angular universal for SEO.</p>
+ | student_name=Chirag Singhal | project_code_url=https://gist.github.com/chirag-singhal/9dfbedaa944b567900eced0c17f62d48 | project_url=https://summerofcode.withgoogle.com/archive/2019/projects/4648943768567808/
+Metadata: {'_id': 39, '_collection_name': 'GSoC_Data1'}
+
+--- DENSE CHUNK 9 ---
+GSoC-2023-projects.csv | Row 534: title=DBpedia eXplainable Chatbot (DBpedia XChat) | contributor_name=Muskan Kothari | code_link=https://colab.research.google.com/drive/1XGPZSr2I-NJa0vxVUkHUQoAsHy277mNq?usp=sharing | mentors=Ram G Athreya, Ricardo Usbeck, Aleksandr Perevalov, Andreas Both | organization=DBpedia | technologies=python, javascript, rdf, docker, rest api, sparql, natural language processing, shell scripting, GitHub Actions | topics=machine learning, natural language processing, semantic web, natural language understanding, linked data, knowledge graphs, Explainable AI, Named Entity Recognition, question answering | project_details=DBpedia unifies the amount of information on the web in Wikimedia projects and provides access in the form of an Open Knowledge Graph. Started in 2021, a DBpedia GSoC project led to the development of a Dialogflow-based chatbot that enables users to access the DBpedia Knowledge Graph (KG) using Natural Language (NL). This QA system provides accessibility but is still quite static. The goal of this GSoC project is to make the QA chatbot more explainable and accessible to increase credibility, accountability, and trust, which helps the user obtain explanations on how the result was obtained, what resources were used, intermediate processing steps and components’ behaviour. This project would achieve the goal by 1) Work with the current codebase to refine and refactor, followed by deployment and a CI/CD pipeline using Docker and GitHub Actions. 2) Introduce new features to the chatbot by adding scenarios that adds explainability on Qanary pipeline and its components. 3) Evaluation of the DBpedia chatbot by running A/B tests to measure user satisfaction 4) Machine Learning integrations might be used to create recommendations for improved QA pipeline configurations. | url=https://summerofcode.withgoogle.com/programs/2023/projects/iokIa3MQ
+Metadata: {'_id': 2775, '_collection_name': 'GSoC_Data1'}
+
+--- DENSE CHUNK 10 ---
+gsoc_2019_projects.csv | Row 42: organization_name=AOSSIE - Australian Open Source Software Innovation and Education | organization_url=http://aossie.org/ | category=End user applications | num_projects=18 | irc_channel=https://gitter.im/AOSSIE/Lobby | technologies=javascript, android, scala, ios, isabelle proof assistant | topics=machine learning, environment, electronic voting, natural language processing, philosophy | project_title=Agora Slack Application | project_short_description=Agora Web is a platform for managing elections. It makes use of the Agora library which is used to count votes and provide election results. This... | project_description=<p>Agora Web is a platform for managing elections. It makes use of the Agora library which is used to count votes and provide election results. This project will focus on creating a slack application that will be used to conduct elections within slack channels using preferential voting algorithms supported by the Agora library. This application will further push the Agora library yet to another set of users who are the slack users. There are some few similar slack applications that provide such functionalities but most of them have a very short list of vote counting methods available if not one. The Agora library with its large number of voting algorithm will be used to create this slack application and consequently will provide its users with over 30 vote counting methods available.</p>
+ | student_name=Bomen Derick | project_code_url=https://gist.github.com/ponsipi/285da5edd906e580861e15edc4acbf78 | project_url=https://summerofcode.withgoogle.com/archive/2019/projects/5998631822295040/
+Metadata: {'_id': 42, '_collection_name': 'GSoC_Data1'}
+
+--- DENSE CHUNK 11 ---
+gsoc_2020_projects.csv | Row 261: organization_name=Digital Impact Alliance (DIAL) at UN Foundation | organization_url=https://www.digitalimpactalliance.org | category=Other | num_projects=14 | irc_channel=http://hub.osc.dial.community/gsoc | contact_email=mailto:mentorship@dial.community | technologies=python, javascript, android, c++, php | topics=humanitarian, nonprofit, humanrights, international, global | project_title=Primero user customization package | project_short_description=The goal of this project is to employ modern frontend technologies and use them in developing front end user customizable skins, that allow... | project_description=<p>The goal of this project is to employ modern frontend technologies and use them in developing front end user customizable skins, that allow improvements to the application’s design and user experience using third party libraries.</p>
+ | student_name=Nidhi Kumari | project_code_url=https://docs.google.com/document/d/16L0F89ugl1vRbQyR9S-FlePLTTBfh7kmdcP8jL3y1nY/edit?usp=sharing | project_url=https://summerofcode.withgoogle.com/archive/2020/projects/5691867196293120/
+Metadata: {'_id': 1395, '_collection_name': 'GSoC_Data1'}
+
+--- DENSE CHUNK 12 ---
+gsoc_2021_projects.csv | Row 233: organization_name=DBpedia | organization_url=https://www.dbpedia.org/ | category=Data | num_projects=10 | irc_channel=https://dbpedia.slack.com/ | contact_email=mailto:dbpedia@infai.org | technologies=python, javascript, scala, rdf, sparql | topics=data science, natural language processing, data analytics, knowledge graphs, data extraction | project_title=Modular DBpedia Chatbot | project_short_description=The project aims at extend the functionality of the current DBpedia chatbot by integrating the ecosystem of the Qanary framework including its... | project_description=<p>The project aims at extend the functionality of the current DBpedia chatbot by integrating the ecosystem of the Qanary framework including its plug-and-play components and plans to move to Google DialogFlow to use state-of-art technology.</p>
+ | student_name=Jayesh Desai | project_code_url=https://github.com/dbpedia/chatbot-ng | project_url=https://summerofcode.withgoogle.com/archive/2021/projects/6527017880649728/
+Metadata: {'_id': 5623, '_collection_name': 'GSoC_Data1'}
+
+--- DENSE CHUNK 13 ---
+gsoc_2025_projects.csv | Row 756: organization_name=FOSSASIA | organization_url=https://fossasia.org | category=Science and medicine | num_projects=16 | contact_email=mailto:office@fossasia.org | technologies=c, python, javascript, django, android | topics=web, hardware, event solutions, android, firmware | project_title=Enhance and Integrate Eventyay Components into a Unified Platform | project_short_description=The project focuses on improving the functionality and usability of key components in the Eventyay platform, specifically the talks, tickets, and... | project_description=The project focuses on improving the functionality and usability of key components in the Eventyay platform, specifically the talks, tickets, and video modules and integrating them into a cohesive, unified system. The goal is to streamline event management by ensuring consistent user experience, reliable data handling, and simplified admin operations.
+Work includes fixing existing bugs in the ticketing and talk modules, refining attendee and speaker management flows, and aligning data models across tickets, sessions, and users. The contributor will optimize database interactions, implement input validation and error-handling mechanisms, and enhance admin interfaces to allow efficient management of attendees, speakers, sessions, and video resources from a single dashboard.
+Additionally, integration tests will be written to ensure system stability and prevent regressions during development. The contributor will also provide updated documentation reflecting the improved workflows and interfaces. These efforts aim to create a maintainable, scalable platform that supports a seamless experience for both event organizers and attendees.
+As part of the ongoing development process, the project also includes maintaining the documentation for the unified platform. This involves ensuring that the deployment of documentation works correctly, keeping it up to date with recent changes in the system architecture, and revising content as needed to reflect new features and workflows. | student_name=Gagan-Ram | project_code_url=https://gist.github.com/Gagan-Ram/cbbc2bd0faaaace45156d7b544c17101 | project_url=https://summerofcode.withgoogle.com/programs/2025/projects/SPHqOZ5X
+Metadata: {'_id': 3901, '_collection_name': 'GSoC_Data1'}
+
+--- DENSE CHUNK 14 ---
+GSoC-2024-projects.csv | Row 50: title=Enhance Simplenews module | contributor_name=Aditi Upadhyay | code_link=https://docs.google.com/document/d/1Jt3eft9BATEQXHsecmV8er0aCVF6gsi_ZkySfZoyXTM/edit?usp=sharing | mentors=Ahmed Aziz | organization=Drupal Association | technologies=javascript, html, php, css | topics=web, compatibility, frontend, integration, development, Tracking, newsletter | project_details=This project aims to enhance Simplenews newsletter module for Drupal 10, enhancing functionalities from existing modules while prioritizing usability, scalability, and compatibility. The project focuses on improving the Simplenews module by addressing specific issues, such as fixing the incorrect subscriber language for anonymous users , resolving bugs for users with blank email addresses, and adding a setting to disable per-user rendering. Key features include efficient subscriber management, streamlined newsletter creation, engagement tracking, and seamless integration with email service providers. Mentored by @azizos, the 8-week project emphasizes meticulous planning, task assignment, and time management, starting with frontend development. With a strong background in Drupal development and project management, the proposer aims to deliver a comprehensive, user-friendly enhancement for Drupal 10. | url=https://summerofcode.withgoogle.com/programs/2024/projects/P4GuMwxr
+Metadata: {'_id': 6644, '_collection_name': 'GSoC_Data1'}
+
+--- DENSE CHUNK 15 ---
+gsoc_2020_projects.csv | Row 740: organization_name=Processing Foundation | organization_url=http://processingfoundation.org | category=Programming languages | num_projects=11 | irc_channel=http://pf-gsoc.slack.com | contact_email=mailto:foundation@processing.org | technologies=python, javascript, android, java, opengl | topics=education, web, graphics, creative coding, design | project_title=p5 for 50+ teaching | project_short_description=Reaching out to 50 and more p5 educators around the world, “p5 for 50+ teaching” aims to contribute in documenting, showcasing, and sharing teaching... | project_description=<p>Reaching out to 50 and more p5 educators around the world, “p5 for 50+ teaching” aims to contribute in documenting, showcasing, and sharing teaching experiences, specifically by re-using the existing features of p5js.org.</p>
+<p>Addresses #Continued development of p5.js Showcase</p>
+ | student_name=Inhwa Yeom | project_code_url=https://github.com/processing/p5.js/blob/main/contributor_docs/project_wrapups/inhwayeom_gsoc_2020.md | project_url=https://summerofcode.withgoogle.com/archive/2020/projects/6330401192148992/
+Metadata: {'_id': 1874, '_collection_name': 'GSoC_Data1'}
+
+--- DENSE CHUNK 16 ---
+gsoc_2021_projects.csv | Row 1173: organization_name=Wikimedia Foundation | organization_url=http://wikimediafoundation.org/ | category=Web | num_projects=10 | irc_channel=https://wikimedia.zulipchat.com/#narrow/stream/274201-gsoc21-outreachy22 | technologies=python, javascript, html, php, css | topics=semantic web, wikipedia, wikimedia, mediawiki, i18n | project_title=Develop a UserScript/Gadget tutorial on MediaWiki.org similar to Wikipedia:The_Wikipedia_Adventure | project_short_description=User scripts are the JavaScript programs that provide Wikipedia users the ability to customize and change the behavior of their user account.... | project_description=<p><strong>User scripts</strong> are the JavaScript programs that provide Wikipedia users the ability to customize and change the behavior of their user account. Numerous user scripts and gadgets are available for users to install quickly. Users can also write their user scripts by either starting from scratch or forking an existing user script.</p>
+<p>Even though MediaWiki has excellent documentation on user scripts, it’s overwhelming. Owing to the powerful functionalities that user scripts provide, one should easily get started with them. <strong>Guided Adventure Tours</strong> is one such medium that can enable amateur developers and users with a little bit of JavaScript knowledge to learn about them in an interactive way.</p>
+<p>This project is about creating a UserScript/Gadget guided tour to facilitate users to learn about user scripts and how they are created using fundamental constructs such as MediaWiki JS Module, MediaWiki Action API, and OOUI, sequentially.</p>
+ | student_name=Devyansh Chawla | project_code_url=https://github.com/thedevyansh/the-userscript-tour | project_url=https://summerofcode.withgoogle.com/archive/2021/projects/6231670797107200/
+Metadata: {'_id': 6563, '_collection_name': 'GSoC_Data1'}
+
+--- DENSE CHUNK 17 ---
+gsoc_2019_projects.csv | Row 27: organization_name=AOSSIE - Australian Open Source Software Innovation and Education | organization_url=http://aossie.org/ | category=End user applications | num_projects=18 | irc_channel=https://gitter.im/AOSSIE/Lobby | technologies=javascript, android, scala, ios, isabelle proof assistant | topics=machine learning, environment, electronic voting, natural language processing, philosophy | project_title=Agora Vote Android Application- Mukul Kumar | project_short_description=Agora vote is a voting platform where users can create elections and invite friends to cast their votes.
+It supports a wide range of voting... | project_description=<p>Agora vote is a voting platform where users can create elections and invite friends to cast their votes.
+It supports a wide range of voting algorithms some of which are Majority, Egalitarian, Australian STV just to name a few.
+Agora vote android application is the implementation of these voting algorithms. By this application we can create elections, invite voters and cast our votes very easily.</p>
+ | student_name=Mukul Kumar | project_code_url=https://gist.github.com/MukulCode/f622974825eb6ceaa01cc13378f91c41 | project_url=https://summerofcode.withgoogle.com/archive/2019/projects/6477088008175616/
+Metadata: {'_id': 27, '_collection_name': 'GSoC_Data1'}
+
+--- DENSE CHUNK 18 ---
+GSoC-2024-projects.csv | Row 518: title=Integration of AI-powered Chatbots for Drupal.org | contributor_name=Krish Gaur | code_link=https://gist.github.com/KrishGaur1354/8671ea3e87b4a7a7c7a7ecdd16c2f6ce | mentors=Anushri Kumari | organization=Drupal Association | technologies=AI, Chatbot Frameworks, Drupal, PHP, JavaScript | topics=ai, user experience, Chatbots | project_details=This proposal aims to enhance user experience on Drupal.org by integrating AI-powered chatbots. The project will focus on solving the problem of providing users with a more interactive and user-friendly experience while navigating the Drupal website. By integrating chatbots, users will have access to instant support, guidance, and information retrieval, improving overall engagement and satisfaction. The project will involve researching and selecting suitable AI frameworks, designing and implementing chatbot functionality, testing for compatibility and usability, and documenting the integration process. The deliverables will include the integration of AI-powered chatbots on Drupal.org, documentation for installation and customization, demonstration of chatbot functionality, and regular blog posts or articles highlighting the benefits and usage of chatbots. | url=https://summerofcode.withgoogle.com/programs/2024/projects/eKKITjdJ
+Metadata: {'_id': 7112, '_collection_name': 'GSoC_Data1'}
+
+--- DENSE CHUNK 19 ---
+gsoc_2020_projects.csv | Row 537: organization_name=mlpack | organization_url=http://mlpack.org/ | category=Data | num_projects=8 | irc_channel=https://www.mlpack.org/community.html#real-time-chat | contact_email=mailto:mlpack@lists.mlpack.org | technologies=python, machine learning, c++, deep learning, templates | topics=machine learning, data science, reinforcement learning, optimization, neighbor-search | project_title=Addition of Rainbow and Soft Actor-Critic to RL codebase | project_short_description=After comparing various algorithms and brainstorming about their methods of implementation, I came up with the Rainbow Hessel et al., 2017 and Soft... | project_description=<p>After comparing various algorithms and brainstorming about their methods of implementation, I came up with the <strong>Rainbow</strong> <a href=\"https://arxiv.org/abs/1710.02298\" target=\"_blank\">Hessel et al., 2017</a> and <strong>Soft Actor-Critic</strong> <a href=\"https://arxiv.org/abs/1812.05905\" target=\"_blank\">Haarnoja et al., 2019</a> as the most in-demand and recent algorithms, whose implementation in mlpack would be crucial.</p>
+<p>Thus, I propose to add them to the existing RL codebase. Here are the details of what I expect to have accomplished at the end of the summer.</p>
+<ul>
+<li>Improving the current QLearning implementation.  </li>
+<li>Implementing Rainbow as an improvement on DQN. This would include adding the following as extensions:<ul>
+<li>Dueling DQN</li>
+<li>Noisy DQN</li>
+<li>Categorical DQN</li>
+<li>N-step DQN</li>
+</ul>
+</li>
+<li>Writing test cases for each of the implementations  </li>
+<li>Implementing Soft Actor-Critic (SAC) for continuous action space, along with its tests  </li>
+<li>Creating detailed docs for all the above implementations  </li>
+<li>Creating necessary environments, for proper testing of algorithms above (after discussing with mentors)</li>
+</ul>
+ | student_name=Nishant Kumar | project_code_url=https://nishantkr18.github.io/GSoC-2020-mlpack/ | project_url=https://summerofcode.withgoogle.com/archive/2020/projects/6549718496182272/
+Metadata: {'_id': 1671, '_collection_name': 'GSoC_Data1'}
+
+--- DENSE CHUNK 20 ---
+gsoc_2020_projects.csv | Row 716: organization_name=OWASP Foundation | organization_url=https://owasp.org/ | category=Security | num_projects=12 | irc_channel=https://owasp.slack.com/messages/CFJLZNFN1 | contact_email=mailto:owasp-gsoc@googlegroups.com | technologies=python, javascript, node.js, .net | topics=information security, application security, web application security, cyber security | project_title=The Honeypot Project | project_short_description=This project focuses on the honeypot project by the OWASP foundation. The goal of the Project is to identify emerging attacks against web... | project_description=<p>This project focuses on the honeypot project by the OWASP foundation. The goal of the Project is to identify emerging attacks against web applications and report them to the community, in order to facilitate protection against such targeted attacks.</p>
+ | student_name=Chirag Bablani | project_code_url=https://medium.com/owasp-gsoc-2020-the-honeypot-project/gsoc20-the-honeypot-project-with-owasp-35366f26abf2 | project_url=https://summerofcode.withgoogle.com/archive/2020/projects/5425812360134656/
+Metadata: {'_id': 1850, '_collection_name': 'GSoC_Data1'}
+
+========== BM25 RESULTS ==========
+
+Rank: 1
+Score: 19.8452751655009
+Text: gsoc_2019_projects.csv | Row 135: organization_name=CCExtractor Development | organization_url=https://www.ccextractor.org/ | category=Media | num_projects=10 | irc_channel=https://www.ccextractor.org/public:general:support | contact_email=mailto:gsoc@ccextractor.org | technologies=c, python, javascript, cloud, ai | topics=ai, vision, subtitles, accessibility, tv | project_title=Poor Man's Rekognition | project_short_description=Imagine a machine that can understand who was the main villain of Avengers: Endgame or what kind of relationships did Daenerys and John Snow have?... | project_description=<p>Imagine a machine that can understand who was the main villain of Avengers: Endgame or what kind of relationships did Daenerys and John Snow have? With the rapid advance of Deep Learning algorithms, we can actually make our computational beasts do the things that even Alan Turing and John von Neumann could not dream about.</p>
+<p>The goal of this project is to create an open-source alternative to Amazon Rekognition, which aims to surpass the capabilities of its proprietary counterpart. The main focus of the current GSoC project is facial detection and recognition. However, in the long term, the aim is to offer a wide array of options ranging from object classification and image segmentation for videos to text analysis of subtitles and conversion of audio to text.</p>
+<p>Moreover, in order to make it easier to digest and understand vast amounts of the extracted data, this project will offer visualization and analysis tools in the form of a Web application that will allow users to build relationship graphs and get insights from extracted data.</p>
+ | student_name=thelastpolaris | project_code_url=http://fedoskin.org/2019/08/24/gsoc-2019-poor-mans-rekognition/ | project_url=https://summerofcode.withgoogle.com/archive/2019/projects/4843814705954816/
+
+Rank: 2
+Score: 15.143017273751955
+Text: GSoC-2022-projects.csv | Row 728: title=Jenkins X GSOC Proposal | contributor_name=Rajat Gupta | code_link=https://jenkins-x.io/blog/2022/11/13/gsoc-2022-work-report/ | mentors=ankitm123, Tom, babadofar, Mårten Svantesson | organization=Jenkins X | technologies=golang, kubernetes, gitops | topics=cloud, CI/CD | project_details=Currently, the way to manage (CRUD) Jenkins X resources(pipelines) is by using the cli. While the CLI is very powerful and user friendly, it should be used by power users (release team who installs and manages jenkins x clusters). We should not expect developers who are concerned with only the pipelines to install the cli (This does not scale when you have 100+ developers in the company) We do have a UI/dashboard, but it is read only, so users cannot use it to trigger release pipelines or stop running pipelines. In addition, we do not have an audit trail of who did what. So, we propose a new UI/dashboard which has feature parity with the CLI (including SSO and RBAC) The UI should make the JX cli redundant, and add more value to the user with easily available status and logs of the entire cluster | url=https://summerofcode.withgoogle.com/programs/2022/projects/FtTH60cj
+
+Rank: 3
+Score: 13.971297554877093
+Text: gsoc_2019_projects.csv | Row 105: organization_name=Canadian Center for Computational Genomics | organization_url=http://computationalgenomics.ca/ | category=Science and medicine | num_projects=4 | contact_email=mailto:gsoc2019@computationalgenomics.ca | technologies=python, javascript, react, nodejs, r-project | topics=visualization, web, bioinformatics, science, statistics | project_title=Flowchart creator for GenPipes | project_short_description=Genpipes is a set of software pipelines designed for genomic analysis. There are currently seven different pipelines and three more are in the... | project_description=<p>Genpipes is a set of software pipelines designed for genomic analysis. There are currently seven different pipelines and three more are in the development phase. These pipelines consist of several steps (10-40). Therefore keeping track of which step was executed, what functionality did it provide, at what time it was executed, whether it failed or succeeded can be a cumbersome task.
+The project consists of an integrated system that automatically builds a flowchart of the steps executed by the user. This would be a user-friendly add-on to the software as having a flowchart of the steps executed would help in the analysis and understanding of the process performed.</p>
+ | student_name=Madhav Vats | project_code_url=https://bitbucket.org/snippets/madhavvats/eA8nA7 | project_url=https://summerofcode.withgoogle.com/archive/2019/projects/5737956432674816/
+
+Rank: 4
+Score: 13.324902285812726
+Text: gsoc_2019_projects.csv | Row 332: organization_name=freifunk | organization_url=https://freifunk.net | category=Social and communication | num_projects=10 | irc_channel=http://irc.freifunk.net | contact_email=mailto:gsoc-org-admins@freifunk.net | technologies=c, python, ruby, openwrt, html/css/js | topics=web apps, embedded systems, software defined networking, network, wireless communications | project_title=OpenWrt Firmware Wizard | project_short_description=The Project has 3 sub-parts which are described as:
+
+Initial Firmware Retrieval:    People who want to update their device, often do not know what... | project_description=<p>The Project has 3 sub-parts which are described as:</p>
+<ol>
+<li><strong>Initial Firmware Retrieval:  </strong>  People who want to update their device, often do not know what firmware file to download. So far the best option is the Wiki, but it is often loaded with too much information. The file download organizes all images files by architecture, but that is what most user usually do not know beforehand. </li>
+<li><strong>Firmware Upgrades: </strong> Create a router web interface package for LuCI to check and apply new images.</li>
+<li><strong>Creating meta-data for each target: </strong> To get the data for both projects, the OpenWrt build system needs to modified to create json files with the necessary metadata.</li>
+</ol>
+ | student_name=Sudhanshu Gautam | project_code_url=https://blog.freifunk.net/2019/08/26/gsoc-2019-openwrt-firmware-wizard-final-update/ | project_url=https://summerofcode.withgoogle.com/archive/2019/projects/4588038850609152/
+
+Rank: 5
+Score: 13.253288859911914
+Text: gsoc_2019_projects.csv | Row 697: organization_name=OWASP Foundation | organization_url=https://www.owasp.org | category=Security | num_projects=12 | irc_channel=https://owasp.slack.com/messages/CFJLZNFN1 | contact_email=mailto:owasp-gsoc@googlegroups.com | technologies=python, javascript, java, php | topics=security, secure development, appsec, application security, sdlc | project_title=OWASP Honeypot GSOC 2019 | project_short_description=OWASP Honeypot :
+The idea is to: 
+  -Test all the modules in the code (currently 4)and if there are bugs found to fix them.
+  -After testing the... | project_description=<p>OWASP Honeypot :
+The idea is to: 
+  -Test all the modules in the code (currently 4)and if there are bugs found to fix them.
+  -After testing the entire codebase, would remove the duplicated code.
+  -Then I would like to work on packet tracing,currently only the information like IP Address and Country is being extracted from the packets and it's not that useful to classify it as high risk or not.So I would discuss with my mentor as to what all needs to be extracted from the packets and would store in the database.</p>
+<ul>
+<li>After that I would like to start with the WEB part of the project,to write new routes and add new visualizations.(this part I am most comfortable with because I already have some industry experience with web)
+-Then would add new visualizations for the extracted details and also some logic to classify the record in the database as high risk ip because now we would have more information from the packet and not limited to IP Address and country
+-Also in between testing modules and removing duplicated codes I would work on PR reviews and issues (if there are any raised or found)
+-Finally at the end would document all the work I did in the wiki section of the project.</li>
+</ul>
+ | student_name=DHIREN DEVINDER SERAI | project_code_url=https://dhirensr.github.io/posts-output/august/20-august | project_url=https://summerofcode.withgoogle.com/archive/2019/projects/5210438885703680/
+
+Rank: 6
+Score: 12.771763894165428
+Text: gsoc_2020_projects.csv | Row 187: organization_name=CircuitVerse.org | organization_url=http://circuitverse.org/ | category=Web | num_projects=4 | irc_channel=https://join.slack.com/t/circuitverse-team/shared_invite/enQtNjc4MzcyNDE5OTA3LTdjYTM5NjFiZWZlZGI2MmU1MmYzYzczNmZlZDg5MjYxYmQ4ODRjMjQxM2UyMWI5ODUzODQzMDU2ZDEzNjI4NmE | contact_email=mailto:support@circuitverse.org | technologies=javascript, bootstrap, html5, rails, canvas | topics=education, web, simulations, pedagogy, digital logic design | project_title=Enhancing  Simulator User Interface | project_short_description=I have always been passionate about projects which are related to web & designing, which is undoubtedly the primary motivation for me to work with... | project_description=<p>I have always been passionate about projects which are related to web &amp; designing, which is undoubtedly the primary motivation for me to work with CircuitVerse &amp; to write this proposal. 
+The project described is of Enhancing Simulator User Interface, for which I plan mainly to revamp the whole User Interface for enhancing user experience. Secondly adding many features &amp; further testing &amp; improving the simulator &amp; let it stand out against all its competitors.
+To be a web developer and a profession  UI/UX expert is my goal in life. I  hope my proposal meets all the standards &amp; requirements the organization seeks.</p>
+ | student_name=Samiran Konwar | project_code_url=https://blog.circuitverse.org/posts/project_4_final_report/ | project_url=https://summerofcode.withgoogle.com/archive/2020/projects/6427919666118656/
+
+Rank: 7
+Score: 12.490511966481291
+Text: gsoc_2019_projects.csv | Row 507: organization_name=LLVM Compiler Infrastructure | organization_url=http://llvm.org | category=Programming languages | num_projects=8 | irc_channel=http://llvm.org/docs/#irc | contact_email=mailto:llvm-dev@lists.llvm.org | technologies=llvm, clang | topics=code analysis, programming languages and development tools, compiler | project_title=Apply the Clang Static Analyzer to LLVM-based projects | project_short_description=The idea is to improve the Clang Static Analyzer so that it is useful for developers who work on Clang and LLVM themselves, as well as on other... | project_description=<p>The idea is to improve the Clang Static Analyzer so that it is useful for developers who work on Clang and LLVM themselves, as well as on other LLVM-based projects, like Swift. LLVM makes use of C++ language features that the Static Analyzer has not yet been taught to understand. The analyzer also has false positives on some C++ idioms commonly used in the LLVM codebase.</p>
+ | student_name=Charusso | project_code_url=https://docs.google.com/document/d/1o9-xEWbzivUGKIOXp9jUNZYq0mkecd5KH5dBN5Hdlu8/ | project_url=https://summerofcode.withgoogle.com/archive/2019/projects/4876350878384128/
+
+Rank: 8
+Score: 12.337590038467383
+Text: gsoc_2021_projects.csv | Row 882: organization_name=ReactOS | organization_url=https://reactos.org | category=Operating systems | num_projects=1 | irc_channel=https://chat.reactos.org | technologies=c, c++, win32, nt | topics=operating systems, applications, kernel, drivers, windows | project_title=ReactOS implement iernonce.dll for RunOnceEx | project_short_description=ReactOS is able to launch commands, when the computer started next time, just for one single time using the RunOnce registry, just as what Windows... | project_description=<p>ReactOS is able to launch commands, when the computer started next time, just for one single time using the <code>RunOnce</code> registry, just as what Windows do. This is executed silently and the progress is hard to track.</p>
+<p>Meanwhile, Windows also supports <code>RunOnceEx</code>, which has these benefits compared to <code>RunOnce</code>:</p>
+<ul>
+<li>Easily able to run multiple items</li>
+<li>Easily able to sequence items</li>
+<li>Shows progress with a GUI</li>
+</ul>
+<p><code>RunOnceEx</code> will provide a great convenience for the user who wants to launch multiple commands and show the progress in a GUI, and making those software depends on <code>RunOnceEx</code> working on ReactOS.</p>
+<p>This project aims at implementing <code>RunOnceExProcess</code> inside iernonce.dll in order to make <code>RunOnceEx</code> usable.</p>
+ | student_name=He Yang | project_code_url=https://github.com/reactos/reactos/pull/3926 | project_url=https://summerofcode.withgoogle.com/archive/2021/projects/6574508374228992/
+
+Rank: 9
+Score: 12.001612808253656
+Text: gsoc_2025_projects.csv | Row 144: organization_name=OpenCV | organization_url=https://opencv.org/ | category=Media | num_projects=9 | technologies=python, c++, deep learning, ai | topics=robotics, computer vision, ai, deep learning | project_title=Adding libcamera support for VideoCapture | project_short_description=The Raspberry Pi OS Bullseye released with a new open camera stack libcamera, while VideoCapture did not integrate with the new camera backend in... | project_description=The Raspberry Pi OS Bullseye released with a new open camera stack libcamera, while VideoCapture did not integrate with the new camera backend in time. Given libcamera blocked the access from OpenCV to legacy camera backend V4L2, VideoCapture have to implement support for libcamera backend. A proper approach is to wrap libcamera's APIs in VideoCapture. | student_name=Xuanrui Zhu | project_code_url=https://gist.github.com/QueenofUSSR/49c550d0237dcdbb9cf25d885a1c2176 | project_url=https://summerofcode.withgoogle.com/programs/2025/projects/0rdlg60L
+
+Rank: 10
+Score: 11.961775382713842
+Text: gsoc_2019_projects.csv | Row 760: organization_name=Python Software Foundation | organization_url=https://www.python.org/ | category=Science and medicine | num_projects=30 | irc_channel=http://python-gsoc.org/index.html#contact | contact_email=mailto:gsoc-general@python.org | technologies=python | topics=programming languages, science | project_title=Mission Support System: Collaborative editing of flight path in real-time | project_short_description=Mission Support System is a flight planning software which a researcher can use to analyze predicted atmospheric data, and plan a flight-path with 3D... | project_description=<p>Mission Support System is a flight planning software which a researcher can use to analyze predicted atmospheric data, and plan a flight-path with 3D way-points. The software in the present state allows editing by a single user per flight-path. To share this work, one has to export the work as a <code>$name.ftml</code> file and send it to other researchers for further planning. This back and forth communication not only consumes a lot of human efforts and time, but also can be frustrating when the number of researchers involved in a project is bigger, say &gt;=3.</p>
+<p>I propose a solution to this problem, the development of <code>Mscollab</code> which stands for \"Mission Support Collaboration\". <code>Mscollab</code> server would facilitate <em>real-time</em>, <em>collaborated</em> editing of flight-paths by <em>authorized</em> users. By design, it will also provide a chat facility for the users who are collaborating on the project. Its UI would be a part of <code>msui</code>, the core User Interface module of <code>mss</code>. It would additionally provide insights about temporal changes related to waypoints and the users who created them, for analytics purpose. <code>Mscollab-server</code> will be a standalone server built with Python, Flask, and python-socketio.</p>
+ | student_name=Shivashis Padhi | project_code_url=https://bitbucket.org/wxmetvis/mss/wiki/Mscolab:%20Collaborative%20editing%20of%20flight%20path%20in%20real-time%20-%20GSoC19 | project_url=https://summerofcode.withgoogle.com/archive/2019/projects/5845020303687680/
+
+================================================================================
+FINAL RETRIEVED CHUNKS
+================================================================================
+
+--- CHUNK 1 ---
+gsoc_2021_projects.csv | Row 1125: organization_name=The Palisadoes Foundation | organization_url=http://www.palisadoes.org/ | category=Social and communication | num_projects=5 | irc_channel=http://www.palisadoes.org/gsoc/ | contact_email=mailto:info@palisadoes.org | technologies=javascript, mongodb, node.js, flutter, graphql | topics=web development, cloud computing, social good, mobile apps, social impact | project_title=GSoC’ 21: The Palisadoes Foundation | project_short_description=Talawa is an open source project helping people with same interest to collaborate together. It deals with managing the members of the group via help... | project_description=<p>Talawa is an open source project helping people with same interest to collaborate together. It deals with managing the members of the group via help of Talawa admin panal. Tawala appilcation helps members to join organizations of their interest via organization's Tawala-api hosted URL.</p>
+<h4>Talawa Feature:</h4>
+<ul>
+<li>[x] International language support.</li>
+<li>[x] Theming</li>
+<li>[x] Messaging</li>
+<li>[x] Organization joining</li>
+<li>[x] Organization switching on same server, feeds, event creation/registration.</li>
+<li>[x] Notifications</li>
+<li>[x] Verified account creation</li>
+<li>[x] Account password recovery</li>
+<li>[x] Signup from google and facebook</li>
+<li>[x] Responsive Layout</li>
+</ul>
+ | student_name=Ritik Kumar Srivastava | project_code_url=https://gist.github.com/CyberWake/eedfbdff1822dc294f48d0c6c8b5cd03 | project_url=https://summerofcode.withgoogle.com/archive/2021/projects/4749161534062592/
+--------------------------------------------------------------------------------
+
+--- CHUNK 2 ---
+GSoC-2024-projects.csv | Row 52: title=Creating a blockchain based community funding platform | contributor_name=Aditya Bhattad | code_link=https://gist.github.com/adityabhattad2021/74fbb611492b60b2df4c55add3ea7a49 | mentors=Bruno, jddeep, hackeramitkumar, Abanda Ludovic, Kumar Harsh, Chandan S Gowda, Harish Dendukuri, Prarabdh Shukla | organization=AOSSIE | technologies=postgresql, typescript, NextJs, Solidity, Ethereum, CronJob | topics=blockchain, Voting | project_details=This project aims to develop a blockchain-based funding platform. At its core, the platform utilizes a proportionality formula to determine the amount of funding each proposal will receive. It also allows the creation of secure funding vaults and enabling users to submit proposals for funding tokens. User experience is a key focus of the platform, with features like stepper based forms designed to enhance engagement and accessibility. The platform uses session-based authentication to ensure secure access for the users. It also includes a personalized \"My Activity\" page which provides each user with a personalized interface to track their interactions and contributions within the platform. Users can create dedicated spaces for creating multiple funding vaults tailored to specific communities. This feature allows for more targeted and relevant funding opportunities. | url=https://summerofcode.withgoogle.com/programs/2024/projects/BTi5ly6d
+--------------------------------------------------------------------------------
+
+--- CHUNK 3 ---
+GSoC-2023-projects.csv | Row 555: title=Hybrid: Build User Portal For Talawa | contributor_name=Noble Mittal | code_link=https://beingnoble03.hashnode.dev/gsoc23-project-report-for-talawa-user-portal | mentors=Peter Harrison, Md Noman Khan, Eva Sharma | organization=The Palisadoes Foundation | technologies=javascript, react, graphql, redux, Material UI | topics=web | project_details=Currently, Talawa misses a web-app for regular users. Creating a User Portal for regular users, makes Talawa accessible to an even larger audience. User can send direct messages, group messages, view/create/delete posts, create/view/delete events through the User Portal. The user portal will be created using Material UI. | url=https://summerofcode.withgoogle.com/programs/2023/projects/tBhcZ1oT
+--------------------------------------------------------------------------------
+
+--- CHUNK 4 ---
+GSoC-2022-projects.csv | Row 706: title=Build Access and Entitlements into a Hosted Version of Augur | contributor_name=Priya Srivastava | code_link=https://github.com/Priya730/GSoC22/blob/main/README.md | mentors=CHAOSS Project, Klumb, Andrew Brain | organization=CHAOSS | technologies=python, postgresql, flask, sql, sqlalchemy | topics=authorisation | project_details=The aim of the project is to build login and access for users. Augur is a software suite for collecting and measuring structured data about free and open-source software (FOSS) communities. The project will help the users to login using CLI and API. The project aims at creating login feature for users. This is implemented as CLI subcommands and through an API. Using these, user will be added to the database. With login functionality, the user experience will be improved. The project focused to add and improve access and authorisation functionalities for hosted version of augur (augur_view). As a future development, the new version of Augur- augur-new, will make it possible to install a single instance for CHAOSS Community members to leverage for initial experimentation with CHAOSS metrics. | url=https://summerofcode.withgoogle.com/programs/2022/projects/YNXT2TFX
+--------------------------------------------------------------------------------
+
+--- CHUNK 5 ---
+gsoc_2020_projects.csv | Row 662: organization_name=OpenMined | organization_url=http://www.openmined.org | category=Other | num_projects=4 | irc_channel=http://slack.openmined.org | contact_email=mailto:andrew@openmined.org | technologies=deep learning, federated learning, homomorphic encryption, secure multi-party computation, differential privacy | topics=privacy, artificial intelligence | project_title=Performing a security audit on privacy-preserving, distributed learning methodologies running on PyGrid with respect to GDPR requirement. | project_short_description=In order to bridge the gap between industry and  new technology, this project will supply governance models which are relevant to Privacy-Preserving... | project_description=<p>In order to bridge the gap between industry and  new technology, this project will supply governance models which are relevant to Privacy-Preserving Machine Learning. This project in particular will be focusing on recommending an incident response model.</p>
+ | student_name=Afzaal Hussain | project_code_url=https://docs.google.com/document/d/1CSkR1_8zPhfDv04CdoM_JHySjWTudZrj7mpnJUafPiw/edit?usp=sharing | project_url=https://summerofcode.withgoogle.com/archive/2020/projects/6701336747311104/
+--------------------------------------------------------------------------------
+
+--- CHUNK 6 ---
+gsoc_2020_projects.csv | Row 632: organization_name=Open Source Robotics Foundation | organization_url=https://www.openrobotics.org/ | category=Programming languages | num_projects=7 | irc_channel=http://wiki.ros.org/Get%20Involved | contact_email=mailto:gsoc@osrfoundation.org | technologies=python, ros, gazebo, c++ | topics=robotics | project_title=Demos for ignition knowledge base | project_short_description=this is my initial proposal introducing myself, ideas and timeline of the project. looking forward to hearing your reply | project_description=<p>this is my initial proposal introducing myself, ideas and timeline of the project. looking forward to hearing your reply</p>
+ | student_name=Mohamed Ahmed Hassan | project_code_url=https://community.gazebosim.org/t/new-ignition-gazebo-demos/613 | project_url=https://summerofcode.withgoogle.com/archive/2020/projects/4804799985352704/
+--------------------------------------------------------------------------------
+
+--- CHUNK 7 ---
+gsoc_2019_projects.csv | Row 109: organization_name=Catrobat | organization_url=https://catrobat.org | category=Programming languages | num_projects=9 | contact_email=mailto:contact@catrobat.org | technologies=android, java, swift, symfony | topics=web, app development, visual programming, gaming | project_title=Amaya | project_short_description=Amaya
+Inspired in the \"Awesome Demo Game Project \" idea
+Amaya is a princess that have his kingdom invade and now needs to defeat The Tyrant to... | project_description=<h4>Amaya</h4>
+<h8>Inspired in the \"Awesome Demo Game Project \" idea</h8>
+<p>Amaya is a princess that have his kingdom invade and now needs to defeat The Tyrant to freedom his people. The idea is inspired in <a href=\"https://www.youtube.com/watch?v=UAO2urG23S4\" target=\"_blank\">Hollow Knight</a> game and consists in run, jump and use magic skills to defeat the enemies and the final boss.</p>
+<p>This idea can be used for the \"Coding Tutorial Game\" too.</p>
+ | student_name=Mikhaelle Bueno | project_code_url=https://github.com/Catrobat/Awesome-Demogame/commit/7088527b93760cac01fe84e33c0654f6be5b35ce | project_url=https://summerofcode.withgoogle.com/archive/2019/projects/6612863198691328/
+--------------------------------------------------------------------------------
+
+--- CHUNK 8 ---
+gsoc_2019_projects.csv | Row 39: organization_name=AOSSIE - Australian Open Source Software Innovation and Education | organization_url=http://aossie.org/ | category=End user applications | num_projects=18 | irc_channel=https://gitter.im/AOSSIE/Lobby | technologies=javascript, android, scala, ios, isabelle proof assistant | topics=machine learning, environment, electronic voting, natural language processing, philosophy | project_title=Agora-web Proposal GSOC 2019 | project_short_description=Agora is a library of data structures and algorithms for counting votes in elections. Agora-web, is a website to conduct online elections.The project... | project_description=<p>Agora is a library of data structures and algorithms for counting votes in elections. Agora-web, is a website to conduct online elections.The project will add Two factor Authentication as an extra layer of security for user's account. Also all the security concerns mentioned in <a href=\"https://civs.cs.cornell.edu/sec_priv.html\" target=\"_blank\">https://civs.cs.cornell.edu/sec_priv.html</a> will be implemented. This project will also build Frontend for agora with good User Interface and Design. Also the new frontend will implement lazy loading and angular universal for SEO.</p>
+ | student_name=Chirag Singhal | project_code_url=https://gist.github.com/chirag-singhal/9dfbedaa944b567900eced0c17f62d48 | project_url=https://summerofcode.withgoogle.com/archive/2019/projects/4648943768567808/
+--------------------------------------------------------------------------------
+
+--- CHUNK 9 ---
+GSoC-2023-projects.csv | Row 534: title=DBpedia eXplainable Chatbot (DBpedia XChat) | contributor_name=Muskan Kothari | code_link=https://colab.research.google.com/drive/1XGPZSr2I-NJa0vxVUkHUQoAsHy277mNq?usp=sharing | mentors=Ram G Athreya, Ricardo Usbeck, Aleksandr Perevalov, Andreas Both | organization=DBpedia | technologies=python, javascript, rdf, docker, rest api, sparql, natural language processing, shell scripting, GitHub Actions | topics=machine learning, natural language processing, semantic web, natural language understanding, linked data, knowledge graphs, Explainable AI, Named Entity Recognition, question answering | project_details=DBpedia unifies the amount of information on the web in Wikimedia projects and provides access in the form of an Open Knowledge Graph. Started in 2021, a DBpedia GSoC project led to the development of a Dialogflow-based chatbot that enables users to access the DBpedia Knowledge Graph (KG) using Natural Language (NL). This QA system provides accessibility but is still quite static. The goal of this GSoC project is to make the QA chatbot more explainable and accessible to increase credibility, accountability, and trust, which helps the user obtain explanations on how the result was obtained, what resources were used, intermediate processing steps and components’ behaviour. This project would achieve the goal by 1) Work with the current codebase to refine and refactor, followed by deployment and a CI/CD pipeline using Docker and GitHub Actions. 2) Introduce new features to the chatbot by adding scenarios that adds explainability on Qanary pipeline and its components. 3) Evaluation of the DBpedia chatbot by running A/B tests to measure user satisfaction 4) Machine Learning integrations might be used to create recommendations for improved QA pipeline configurations. | url=https://summerofcode.withgoogle.com/programs/2023/projects/iokIa3MQ
+--------------------------------------------------------------------------------
+
+--- CHUNK 10 ---
+gsoc_2019_projects.csv | Row 42: organization_name=AOSSIE - Australian Open Source Software Innovation and Education | organization_url=http://aossie.org/ | category=End user applications | num_projects=18 | irc_channel=https://gitter.im/AOSSIE/Lobby | technologies=javascript, android, scala, ios, isabelle proof assistant | topics=machine learning, environment, electronic voting, natural language processing, philosophy | project_title=Agora Slack Application | project_short_description=Agora Web is a platform for managing elections. It makes use of the Agora library which is used to count votes and provide election results. This... | project_description=<p>Agora Web is a platform for managing elections. It makes use of the Agora library which is used to count votes and provide election results. This project will focus on creating a slack application that will be used to conduct elections within slack channels using preferential voting algorithms supported by the Agora library. This application will further push the Agora library yet to another set of users who are the slack users. There are some few similar slack applications that provide such functionalities but most of them have a very short list of vote counting methods available if not one. The Agora library with its large number of voting algorithm will be used to create this slack application and consequently will provide its users with over 30 vote counting methods available.</p>
+ | student_name=Bomen Derick | project_code_url=https://gist.github.com/ponsipi/285da5edd906e580861e15edc4acbf78 | project_url=https://summerofcode.withgoogle.com/archive/2019/projects/5998631822295040/
+
+",
+
+"answer": "The provided context and history do not contain sufficient information to answer this question. Please try rephrasing your query with more specific details.
+
+Here are two suggested ways to rephrase your question for better results:
+
+\"Which GSoC contributors worked on projects involving organizations like AOSSIE or The Palisadoes Foundation?"
+"Can you provide details on GSoC projects focused on blockchain, voting platforms, or web applications across recent GSoC years?\"
+"
+
+"accurate_answer":" AOSSIE
+mentors: Bruno, Aditya Bhattad, Yogesh Agrawal, José Miguel Avellana, ldgaetano
+title: BenefactionPlatform-Ergo: Expanding Fundraising Capabilities on Ergo
+desc:
+Technologies
+docker, typescript, vite, SvelteKit, Ergoscript, Fleet SDK
+Topics
+smart contracts, Web3, Frontend Development, Blockchain Development, Token Economics
+The Bene Fundraising Platform on the Ergo blockchain uses a unique token system (APT/PFT) to support fundraising projects. This project will improve the Ergo version by adding support for multiple tokens, including stablecoins, and bringing it in line with the EVM version. Main goals include: adding stablecoin and multi-token support, integrating multiple wallets, building a referral system with protection against misuse, creating a project analytics dashboard, and improving the user interface and accessibility. These updates will make Bene easier to use, more powerful, and more welcoming to new users, helping grow the Ergo fundraising community.
+",
+"correct chunk" :
+
+{
+  "result": {
+    "points": [
+      {
+        "id": 3229,
+        "payload": {
+          "text": "gsoc_2025_projects.csv | Row 84: organization_name=AOSSIE | organization_url=https://www.aossie.org | category=End user applications | num_projects=19 | irc_channel=https://discord.gg/fuuWX4AbJt | technologies=python, javascript, flutter, Blockchain, Solidity | topics=web, artificial intelligence, communication, mobile, blockchain | project_title=BenefactionPlatform-Ergo: Expanding Fundraising Capabilities on Ergo | project_short_description=The Bene Fundraising Platform on the Ergo blockchain uses a unique token system (APT/PFT) to support fundraising projects. This project will improve... | project_description=The Bene Fundraising Platform on the Ergo blockchain uses a unique token system (APT/PFT) to support fundraising projects. This project will improve the Ergo version by adding support for multiple tokens, including stablecoins, and bringing it in line with the EVM version.\nMain goals include: adding stablecoin and multi-token support, integrating multiple wallets, building a referral system with protection against misuse, creating a project analytics dashboard, and improving the user interface and accessibility. These updates will make Bene easier to use, more powerful, and more welcoming to new users, helping grow the Ergo fundraising community. | student_name=AdityaGupta256 | project_code_url=https://github.com/AdityaGupta20871/GSOC_REPORT/blob/main/README.md | project_url=https://summerofcode.withgoogle.com/programs/2025/projects/tf3WhF61",
+          "chunk_id": 3229
+        }
+      }
+    ],
+    "next_page_offset": null
+  },
+  "status": "ok",
+  "time": 0.000949842
+}
+}

@@ -170,6 +170,12 @@ bm25 = BM25Okapi(tokenized_corpus)
 
 def hybrid_search(query, top_k=10):
     dense_docs = retriever.invoke(query)
+    print("\n========== DENSE RETRIEVAL ==========")
+
+    for i, doc in enumerate(dense_docs, 1):
+         print(f"\n--- DENSE CHUNK {i} ---")
+         print(doc.page_content)
+         print("Metadata:", doc.metadata)
 
     tokenized_query = query.split()
     bm25_scores = bm25.get_scores(tokenized_query)
@@ -187,6 +193,12 @@ def hybrid_search(query, top_k=10):
         combined.append((text, bm25_score))
 
     combined_sorted = sorted(combined, key=lambda x: x[1], reverse=True)
+    print("\n========== BM25 RESULTS ==========")
+
+    for i, result in enumerate(bm25_results, 1):
+        print(f"\nRank: {i}")
+        print(f"Score: {result['score']}")
+        print(f"Text: {result['text']}")
 
     return [doc for doc, _ in combined_sorted[:top_k]]
 
@@ -286,7 +298,17 @@ def get_history_safe(_):
 def hybrid_with_history(q):
     history = get_history_safe(None)
     combined_query = f"{history}\nUser question: {q}"
-    return hybrid_search(combined_query)
+    retrieved_docs = hybrid_search(combined_query)
+
+    print("\n" + "=" * 80)
+    print("FINAL RETRIEVED CHUNKS")
+    print("=" * 80)
+
+    for i, doc in enumerate(retrieved_docs, 1):
+        print(f"\n--- CHUNK {i} ---")
+        print(doc)
+        print("-" * 80)
+    return retrieved_docs
 
 hybrid_search_runnable = RunnableLambda(hybrid_with_history)
 format_docs_runnable = RunnableLambda(lambda docs: format_docs(docs))
