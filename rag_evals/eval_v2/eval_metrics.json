@@ -1,0 +1,62 @@
+{
+  "evaluation_info": {
+    "folder": "eval_v2",
+    "evaluated_files": [
+      "eval_1.json",
+      "eval_2.json",
+      "eval_3.json",
+      "eval_4.json"
+    ],
+    "total_queries": 4,
+    "k": 5,
+    "llm_used": false,
+    "dependencies": "Python standard library only",
+    "important_note": "End-to-end scores are deterministic lexical/structural proxies, not semantic judgments. Retrieved chunks are calculated as the union of Dense and BM25 chunk IDs. Precision and recall use this union. Dense IDs and BM25 IDs are unordered, so ranked @k metrics cannot be calculated."
+  },
+  "per_query": [
+    {
+      "question": "who is AdityaGupta256? what did he work on",
+      "source_file": "eval_1.json",
+      "precision": 0.0,
+      "recall": 0.0,
+      "counts": {
+        "correct_chunks": 1,
+        "dense_chunks": 20,
+        "bm25_chunks": 10
+      }
+    },
+    {
+      "question": "who are contributors for owasp-blt 2025",
+      "source_file": "eval_2.json",
+      "precision": 0.32,
+      "recall": 0.666667,
+      "counts": {
+        "correct_chunks": 12,
+        "dense_chunks": 20,
+        "bm25_chunks": 10
+      }
+    },
+    {
+      "question": "list of 3 python based projects",
+      "source_file": "eval_3.json",
+      "precision": 0.033333,
+      "recall": 0.333333,
+      "counts": {
+        "correct_chunks": 3,
+        "dense_chunks": 20,
+        "bm25_chunks": 10
+      }
+    },
+    {
+      "question": "who are mentors from django from the year 2022 to the year 2024",
+      "source_file": "eval_4.json",
+      "precision": 0.178571,
+      "recall": 0.714286,
+      "counts": {
+        "correct_chunks": 7,
+        "dense_chunks": 20,
+        "bm25_chunks": 10
+      }
+    }
+  ]
+}

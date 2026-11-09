@@ -1,0 +1,64 @@
+{
+  "question": " \n who are mentors from django from the year 2022 to the year 2024",
+  "output": "Dense IDs: {'4584', '5654', '5653', '1404', '5377', '271', '5068', '7100', '5806', '6711', '6748', '4414', '3566', '3568', '3762', '5387', '7433', '5786', '1405', '4029'}\nBM25 IDs: {'4584', '5062', '4715', '4866', '4414', '7565', '5081', '5347', '6869', '4984'}",
+  "answer": "Based on the provided context, here are the mentors for Django Software Foundation projects from the years 2022 to 2024:\nGSoC 2022\nProject Title: Django Benchmarking\nOrganization: Django Software Foundation\nContributor: Deepak Dinesh\nMentors: @carltongibson, David Smith\nProject Title: Per field-instance lookups\nOrganization: Django Software Foundation\nContributor: Allen Jonathan David\nMentors: Mariusz Felisiak, Simon Charette\nGSoC 2023\nNote: The provided context does not contain any project or mentor information for the Django Software Foundation from the year 2023.\nGSoC 2024\nProject Title: Auto Importing Shell\nOrganization: Django Software Foundation\nContributor: Salvo Polizzi\nMentors: Bhuvnesh Sharma, Thibaud Colas\nProject Title: Add Async Support to Django Debug Toolbar\nOrganization: Django Software Foundation\nContributor: AmanPandey\nMentors: Tim Schilling\nProject Title: Django ORM support for composite primary keys\nOrganization: Django Software Foundation\nContributor: csirmazbendeguz\nMentors: Lily Foote\nSummary of Mentors (2022 & 2024)\n2022 Mentors: @carltongibson, David Smith, Mariusz Felisiak, Simon Charette\n2024 Mentors: Bhuvnesh Sharma, Thibaud Colas, Tim Schilling, Lily Foote",
+  "accurate_answer": "\n2023\nMariusz Felisiak, Natalia B\n2022\nMariusz Felisiak, Simon Charette\n@carltongibson, David Smith\n2024\nSage Abdullah\nLily Foote\nTim Schilling\nBhuvnesh Sharma, Thibaud Colas",
+  "correct chunk": {
+    "result": {
+      "points": [
+        {
+          "id": 2407,
+          "payload": {
+            "text": "GSoC-2023-projects.csv | Row 166: title=Allow moving a model between apps | contributor_name=Bhuvnesh Sharma | code_link=https://gist.github.com/DevilsAutumn/61404f4cbfc583ced8dbc7a66d9de127 | mentors=Mariusz Felisiak, Natalia B | organization=Django Software Foundation | technologies=python, django | topics=web development | project_details=The goal of this project is to allowing moving models between apps.. The model movement will be auto detected by a new generate_moved_model method in auto-detector to decrease the manual work load. The model will be moved using all the existing operations. | url=https://summerofcode.withgoogle.com/programs/2023/projects/ZnrbdQSB",
+            "chunk_id": 2407
+          }
+        },
+        {
+          "id": 4414,
+          "payload": {
+            "text": "GSoC-2022-projects.csv | Row 78: title=Per field-instance lookups | contributor_name=Allen Jonathan David | code_link=https://gist.github.com/AllenJonathan/daa714160858004b3adef90d416574da | mentors=Mariusz Felisiak, Simon Charette | organization=Django Software Foundation | technologies=python | topics=web development | project_details=Currently, lookups could be registered to a Field class which limits the versatility of Django lookups. This project adds support for lookups (building blocks to filter from a database) to be registered and unregistered for a specific Field instance (representing a field of a database table). So Field-instance-specific lookups can now be done in Django! | url=https://summerofcode.withgoogle.com/programs/2022/projects/8nLt19Gm",
+            "chunk_id": 4414
+          }
+        },
+        {
+          "id": 4584,
+          "payload": {
+            "text": "GSoC-2022-projects.csv | Row 248: title=Django Benchmarking | contributor_name=Deepak Dinesh | code_link=https://gist.github.com/deepakdinesh1123/58d91e292533746017e3568c5a3f374f | mentors=@carltongibson, David Smith | organization=Django Software Foundation | technologies=python, django, docker, database, Github CI | topics=automation, benchmarking | project_details=The main goals of this project are to improve the current set of Django benchmarks in djangobench by integrating them with Airspeed velocity and running them regularly and load test different ASGI and WSGI servers using locust to compare their performances | url=https://summerofcode.withgoogle.com/programs/2022/projects/t8r1UJgj",
+            "chunk_id": 4584
+          }
+        },
+        {
+          "id": 6711,
+          "payload": {
+            "text": "GSoC-2024-projects.csv | Row 117: title=Add Async Support to Django Debug Toolbar | contributor_name=AmanPandey | code_link=https://gist.github.com/salty-ivy/eca9251850ac6f5473cf6cbe67ddd5e7 | mentors=Tim Schilling | organization=Django Software Foundation | technologies=python, django, django-debugtoolbar, django-channels | topics=web, backend, async | project_details=The project aims to enhance the Django Debug Toolbar (DDT) by adding comprehensive asynchronous support to make it fully compatible with Django Channels and asynchronous Django applications running under the ASGI specification. This can be proceeded by adding separate storage mechanism for panels and async aware middleware | url=https://summerofcode.withgoogle.com/programs/2024/projects/iXVvyGYp",
+            "chunk_id": 6711
+          }
+        },
+        {
+          "id": 6869,
+          "payload": {
+            "text": "GSoC-2024-projects.csv | Row 275: title=Django ORM support for composite primary keys | contributor_name=csirmazbendeguz | code_link=https://gist.github.com/csirmazbendeguz/112ca6256f006f49fddfc952276022d1 | mentors=Lily Foote | organization=Django Software Foundation | technologies=python, mysql, postgresql, mariadb, sqlite, Oracle | topics=Django ORM | project_details=In database design, composite primary keys are often necessary for the partitioning and sharding of database tables. - Citus is a PostgreSQL extension that transforms PostgreSQL into a distributed database. - django-multitenant is a library by Citus which enables developers to build multi-tenant applications in Django. In Citus, composite primary keys are required. So, in order to use these tools with Django, the developers must work around the Django ORM. To make building multi-tenant apps easier, I propose adding composite primary key support to the Django ORM. https://gist.github.com/csirmazbendeguz/de1fdf88bf9df0dfba837f8e88c35df6 | url=https://summerofcode.withgoogle.com/programs/2024/projects/cv8UcKtX",
+            "chunk_id": 6869
+          }
+        },
+        {
+          "id": 7433,
+          "payload": {
+            "text": "GSoC-2024-projects.csv | Row 839: title=Auto Importing Shell | contributor_name=Salvo Polizzi | code_link=https://gist.github.com/salvo-polizzi/cc53ece836ecc8f9dd863e21168feb23 | mentors=Bhuvnesh Sharma, Thibaud Colas | organization=Django Software Foundation | technologies=python | topics=web | project_details=This would be an update of the existing Django shell that auto-imports models for you from your app/project. Also, the goal would be to allow the user to subclass this shell to customize its behavior and import extra things. | url=https://summerofcode.withgoogle.com/programs/2024/projects/MghMVVvO",
+            "chunk_id": 7433
+          }
+        },
+        {
+          "id": 7469,
+          "payload": {
+            "text": "GSoC-2024-projects.csv | Row 875: title=Add support for using key and path transforms in update() for JSONFields. | contributor_name=Shafiya Adzhani | code_link=https://github.com/django/django/pull/18489 | mentors=Sage Abdullah | organization=Django Software Foundation | technologies=python, mysql, postgresql, django, sqlite, Oracle | topics=web, database | project_details=The ticket-32159 (https://code.djangoproject.com/ticket/32519) originally requested a new feature to make Django provide generic database functions for manipulating JSON data on the database. Currently, in order to make partial updates to a JSONField, developers need tol oad model instance to the memory, modify JSONField data as objects, then call save() on the model instance, or write custom mapping for JSON functions as Func subclasses, and use them in update(). It would be better if Django has built-in support for doing partial JSONField updates more efficiently and more idiomatic to how developers can currently query JSONFields (i.e. with key transforms). In order to achieve that, this proposal intends to create an implementation for all databases supported that developers can use in order to update partial values of JSONField. This project aims to accomplish the problem by dividing it into two big parts: first, implement JSONSet and JSONRemove functions to allow partial updates to JSONField. Second, add support for key transforms in update() for JSONField to make it easier to use for developers. The project will be executed on creating JSONSet for SQLite, MySQL, PostgreSQL, Oracle first, then, create JSONRemove on same databases. After that, support for key transform on update() will be implemented. | url=https://summerofcode.withgoogle.com/programs/2024/projects/dav6kK0h",
+            "chunk_id": 7469
+          }
+        }
+      ],
+      "next_page_offset": null
+    },
+    "status": "ok",
+    "time": 0.001834319
+  }
+}

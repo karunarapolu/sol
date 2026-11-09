@@ -1,0 +1,23 @@
+{
+  "question": "who is AdityaGupta256? what did he work on",
+  "output": "Dense IDs: {'5623', '5184', '301', '4150', '6073', '1874', '4726', '1167', '6646', '109', '2796', '5647', '4151', '1796', '1395', '5117', '6644', '1671', '6515', '1766'}\n           BM25 IDs: {'7057', '6272', '1393', '697', '2853', '105', '5064', '4821', '6109', '135'}",
+  "answer": "The provided context and history do not contain sufficient information to answer this question. Please try rephrasing your query with more specific details. Here are two suggested ways to rephrase your question for better results: \"Which GSoC project did Aditya Bhattad work on for AOSSIE in 2024?\" \"Can you provide details on GSoC projects related to blockchain, web development, or machine learning across different participating organizations?",
+  "accurate answer":"AdityaGupta256 is from AOSSIE from the year 2025. All other details from chunk 3229",
+  "correct chunk" :
+{
+  "result": {
+    "points": [
+      {
+        "id": 3229,
+        "payload": {
+          "text": "gsoc_2025_projects.csv | Row 84: organization_name=AOSSIE | organization_url=https://www.aossie.org | category=End user applications | num_projects=19 | irc_channel=https://discord.gg/fuuWX4AbJt | technologies=python, javascript, flutter, Blockchain, Solidity | topics=web, artificial intelligence, communication, mobile, blockchain | project_title=BenefactionPlatform-Ergo: Expanding Fundraising Capabilities on Ergo | project_short_description=The Bene Fundraising Platform on the Ergo blockchain uses a unique token system (APT/PFT) to support fundraising projects. This project will improve... | project_description=The Bene Fundraising Platform on the Ergo blockchain uses a unique token system (APT/PFT) to support fundraising projects. This project will improve the Ergo version by adding support for multiple tokens, including stablecoins, and bringing it in line with the EVM version.\nMain goals include: adding stablecoin and multi-token support, integrating multiple wallets, building a referral system with protection against misuse, creating a project analytics dashboard, and improving the user interface and accessibility. These updates will make Bene easier to use, more powerful, and more welcoming to new users, helping grow the Ergo fundraising community. | student_name=AdityaGupta256 | project_code_url=https://github.com/AdityaGupta20871/GSOC_REPORT/blob/main/README.md | project_url=https://summerofcode.withgoogle.com/programs/2025/projects/tf3WhF61",
+          "chunk_id": 3229
+        }
+      }
+    ],
+    "next_page_offset": null
+  },
+  "status": "ok",
+  "time": 0.000949842
+}
+}
