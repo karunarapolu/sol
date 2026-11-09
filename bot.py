@@ -1,7 +1,7 @@
 import os
 import streamlit as st
 import sqlite3
-from qdrant_client import QdrantClient
+from qdrant_client import QdrantClient, models
 from sentence_transformers import SentenceTransformer
 
 from langchain_qdrant import QdrantVectorStore
@@ -13,9 +13,8 @@ from langchain_core.runnables import RunnableLambda
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.embeddings import Embeddings
 from google.api_core.exceptions import ResourceExhausted
-
-from rank_bm25 import BM25Okapi
 import uuid
+import re
 
 
 # ======================================================
@@ -134,7 +133,14 @@ qdrant_client = QdrantClient(
     api_key=os.getenv("QDRANT_API_KEY"),
     check_compatibility=False
 )
-
+qdrant_client.create_payload_index(
+    collection_name="GSoC_Data1",
+    field_name="text",
+    field_schema=models.TextIndexParams(
+        type=models.TextIndexType.TEXT,
+        scoring=True
+    )
+)
 
 # ======================================================
 # Vector store
@@ -154,54 +160,53 @@ if user_query and st.session_state.title == "New Chat":
     st.session_state.title = user_query[:50]
 
 
-# ======================================================
-# BM25 keyword search setup
-# ======================================================
-
-all_docs = qdrant_client.scroll(
-    collection_name="GSoC_Data1",
-    limit=10000
-)[0]
-
-corpus = [doc.payload["text"] for doc in all_docs]
-tokenized_corpus = [doc.split() for doc in corpus]
-bm25 = BM25Okapi(tokenized_corpus)
-
 
 def hybrid_search(query, top_k=10):
     dense_docs = retriever.invoke(query)
+    dense_ids = {str(doc.metadata["_id"]) for doc in dense_docs}
+
     print("\n========== DENSE RETRIEVAL ==========")
 
     for i, doc in enumerate(dense_docs, 1):
          print(f"\n--- DENSE CHUNK {i} ---")
+         print(f"ID: {doc.metadata['_id']}")
          print(doc.page_content)
-         print("Metadata:", doc.metadata)
+    query = re.sub(r"[^\w\s]", "", query)
+    print(query)
+    sparse_results = qdrant_client.query_points(
+    collection_name="GSoC_Data1",
+    query=models.TextQuery(text=query),
+    using="text",
+    limit=10,
+    with_payload=True
+     ).points
+    q_ids = {str(doc.id) for doc in sparse_results}
+    
 
-    tokenized_query = query.split()
-    bm25_scores = bm25.get_scores(tokenized_query)
+    for rank, doc in enumerate(sparse_results, 1):
+     print(f"\nRank: {rank}")
+     print(f"ID: {doc.id}")
+     print(f"Score: {doc.score}")
+     print(f"Text: {doc.payload['text']}")
 
-    bm25_results = [
-        {"text": corpus[i], "score": bm25_scores[i]}
-        for i in range(len(corpus))
+    all_ids = dense_ids | q_ids
+    all_docs = [
+    doc for doc in dense_docs
+    if str(doc.metadata["_id"]) in all_ids
+     ]
+
+    all_docs += [
+    doc for doc in sparse_results
+    if str(doc.id) in all_ids
+    and str(doc.id) not in dense_ids
     ]
-    bm25_results = sorted(bm25_results, key=lambda x: x["score"], reverse=True)[:top_k]
-
-    combined = []
-    for doc in dense_docs:
-        text = doc.page_content
-        bm25_score = next((r["score"] for r in bm25_results if r["text"] == text), 0)
-        combined.append((text, bm25_score))
-
-    combined_sorted = sorted(combined, key=lambda x: x[1], reverse=True)
-    print("\n========== BM25 RESULTS ==========")
-
-    for i, result in enumerate(bm25_results, 1):
-        print(f"\nRank: {i}")
-        print(f"Score: {result['score']}")
-        print(f"Text: {result['text']}")
-
-    return [doc for doc, _ in combined_sorted[:top_k]]
-
+    print("Dense IDs:", dense_ids)
+    print("Sparse IDs:", q_ids)
+    all_docs_ids = [
+      str(doc.metadata["_id"]) if hasattr(doc, "metadata") else str(doc.id)
+      for doc in all_docs
+     ]
+    return all_docs
 
 # ======================================================
 # Gemini LLM
@@ -222,9 +227,10 @@ prompt_template = """
 You are a retrieval-augmented chatbot specialized in Google Summer of Code (GSoC).
 
 CRITICAL RULE:
-You must ONLY use information explicitly present in the retrieved context or the provided conversation history. 
+You must ONLY use information explicitly present in the context or the provided conversation history. 
 If the answer is not fully supported by either, you MUST say so.
-
+The retrieved context may contain both relevant and irrelevant chunks. Review all retrieved chunks,
+identify those that directly contribute to answering the user's query, and filter out unrelated or redundant information.
 Rules:
 - No guessing
 - No assumptions
@@ -234,12 +240,11 @@ Rules:
 
 Response requirements:
 - Provide a clear, complete, and detailed answer that includes ALL relevant information from the context and history.
--pay attention to the history and refer to the history,respond with respect to the history when there is one.
+- pay attention to the history and refer to the history,respond with respect to the history when there is one.
 - Organize the answer logically, covering every important point mentioned.
 - Use concise, professional language that is accurate and easy to follow.
-- If multiple pieces of relevant information exist, synthesize them into a cohesive answer rather than listing them separately.
-- Highlight key details (such as dates, eligibility criteria, processes, or examples) so the user receives a comprehensive response.
 - When possible, structure the answer into sections or bullet points for readability.
+- Structure the answer according to standard GSoC structure and include name of the contributor, mentors, technologies, project details, year, organization and every other detail given.
 
 Fallbacks:
 - If insufficient context/history exists, respond with:
@@ -273,14 +278,16 @@ prompt = PromptTemplate(
 # ======================================================
 
 def format_docs(docs):
-    return "\n\n".join(docs)
-
+    return "\n\n".join(
+        doc.page_content if hasattr(doc, "page_content") else doc.payload["text"]
+        for doc in docs
+    )
 
 def get_recent_history(conv_id, n=10):
     conn = sqlite3.connect("chat_history.db")
     cursor = conn.cursor()
     cursor.execute(
-        "SELECT user_message, bot_response FROM chat_history WHERE conversation_id=? ORDER BY id ASC LIMIT ?",
+        "SELECT user_message, bot_response FROM chat_history WHERE conversation_id=? ORDER BY id DESC LIMIT ?",
         (conv_id, n)
     )
     rows = cursor.fetchall()
@@ -296,18 +303,7 @@ def get_history_safe(_):
 # RAG Chain
 # ======================================================
 def hybrid_with_history(q):
-    history = get_history_safe(None)
-    combined_query = f"{history}\nUser question: {q}"
-    retrieved_docs = hybrid_search(combined_query)
-
-    print("\n" + "=" * 80)
-    print("FINAL RETRIEVED CHUNKS")
-    print("=" * 80)
-
-    for i, doc in enumerate(retrieved_docs, 1):
-        print(f"\n--- CHUNK {i} ---")
-        print(doc)
-        print("-" * 80)
+    retrieved_docs = hybrid_search(q)
     return retrieved_docs
 
 hybrid_search_runnable = RunnableLambda(hybrid_with_history)
@@ -380,11 +376,7 @@ if "title" not in st.session_state:
 
 if user_query:
     with st.spinner("Retrieving grounded answer..."):
-        docs = retriever.invoke(user_query)
         answer = run_rag_chain(user_query)
-        history = get_history_safe(None)
-
-        print("\nHISTORY:\n", history)
 
     if st.session_state.title == "New Chat":
         st.session_state.title = user_query[:50]
