@@ -1,0 +1,342 @@
+{
+  "evaluation_info": {
+    "folder": "eval_v1",
+    "evaluated_files": [
+      "eval1.json",
+      "eval2.json",
+      "eval3.json",
+      "eval4.json"
+    ],
+    "total_queries": 3,
+    "k": 5,
+    "llm_used": false,
+    "dependencies": "Python standard library only",
+    "important_note": "End-to-end scores are deterministic lexical/structural proxies, not semantic judgments. Retrieval matching uses chunk IDs when available and exact normalized chunk text otherwise."
+  },
+  "retrieval_level": {
+    "precision": 0.133333,
+    "recall": 0.150794,
+    "f1_score": 0.139037,
+    "hit_rate": 0.666667,
+    "mean_reciprocal_rank_mrr": 0.388889,
+    "mean_average_precision_map": 0.064815,
+    "ndcg_at_k": 0.16958,
+    "precision_at_k": 0.133333,
+    "recall_at_k": 0.055556
+  },
+  "end_to_end": {
+    "answer_relevance": 0.173384,
+    "context_utilization": 0.735567,
+    "groundedness": 0.958333,
+    "hallucination_rate": 0.041667,
+    "response_coherence": 0.902778,
+    "relevancy_score": 0.193043
+  },
+  "retrieval_stage_averages": {
+    "dense": {
+      "precision": 0.45,
+      "recall": 0.255571,
+      "f1_score": 0.160598,
+      "hit_rate": 1.0,
+      "mean_reciprocal_rank_mrr": 0.722222,
+      "mean_average_precision_map": 0.089235,
+      "ndcg_at_k": 0.502913,
+      "precision_at_k": 0.466667,
+      "recall_at_k": 0.055956
+    },
+    "bm25": {
+      "precision": 0.033333,
+      "recall": 0.027778,
+      "f1_score": 0.030303,
+      "hit_rate": 0.333333,
+      "mean_reciprocal_rank_mrr": 0.083333,
+      "mean_average_precision_map": 0.006944,
+      "ndcg_at_k": 0.048689,
+      "precision_at_k": 0.066667,
+      "recall_at_k": 0.027778
+    },
+    "final": {
+      "precision": 0.133333,
+      "recall": 0.150794,
+      "f1_score": 0.139037,
+      "hit_rate": 0.666667,
+      "mean_reciprocal_rank_mrr": 0.388889,
+      "mean_average_precision_map": 0.064815,
+      "ndcg_at_k": 0.16958,
+      "precision_at_k": 0.133333,
+      "recall_at_k": 0.055556
+    }
+  },
+  "per_query": [
+    {
+      "question": "who are contributors for owasp-blt 2025",
+      "source_file": "eval2.json",
+      "retrieval_stage_used": "final",
+      "retrieval_level": {
+        "precision": 0.2,
+        "recall": 0.166667,
+        "f1_score": 0.181818,
+        "hit_rate": 1.0,
+        "mean_reciprocal_rank_mrr": 1.0,
+        "mean_average_precision_map": 0.138889,
+        "ndcg_at_k": 0.50874,
+        "precision_at_k": 0.4,
+        "recall_at_k": 0.166667,
+        "k": 5,
+        "retrieved_count": 10,
+        "relevant_count": 12,
+        "matched_relevant_count": 2
+      },
+      "retrieval_stages": {
+        "dense": {
+          "precision": 0.2,
+          "recall": 0.333333,
+          "f1_score": 0.25,
+          "hit_rate": 1.0,
+          "mean_reciprocal_rank_mrr": 1.0,
+          "mean_average_precision_map": 0.180556,
+          "ndcg_at_k": 0.50874,
+          "precision_at_k": 0.4,
+          "recall_at_k": 0.166667,
+          "k": 5,
+          "retrieved_count": 20,
+          "relevant_count": 12,
+          "matched_relevant_count": 4
+        },
+        "bm25": {
+          "precision": 0.1,
+          "recall": 0.083333,
+          "f1_score": 0.090909,
+          "hit_rate": 1.0,
+          "mean_reciprocal_rank_mrr": 0.25,
+          "mean_average_precision_map": 0.020833,
+          "ndcg_at_k": 0.146068,
+          "precision_at_k": 0.2,
+          "recall_at_k": 0.083333,
+          "k": 5,
+          "retrieved_count": 10,
+          "relevant_count": 12,
+          "matched_relevant_count": 1
+        },
+        "final": {
+          "precision": 0.2,
+          "recall": 0.166667,
+          "f1_score": 0.181818,
+          "hit_rate": 1.0,
+          "mean_reciprocal_rank_mrr": 1.0,
+          "mean_average_precision_map": 0.138889,
+          "ndcg_at_k": 0.50874,
+          "precision_at_k": 0.4,
+          "recall_at_k": 0.166667,
+          "k": 5,
+          "retrieved_count": 10,
+          "relevant_count": 12,
+          "matched_relevant_count": 2
+        }
+      },
+      "end_to_end": {
+        "answer_relevance": 0.095238,
+        "context_utilization": 0.72973,
+        "groundedness": 0.916667,
+        "hallucination_rate": 0.083333,
+        "response_coherence": 1.0,
+        "relevancy_score": 0.104393,
+        "method": {
+          "answer_relevance": "Token-level precision/recall F1 against accurate_answer.",
+          "context_utilization": "Fraction of meaningful answer tokens also found in retrieved context.",
+          "groundedness": "Fraction of answer sentences with at least 30% meaningful-token overlap with retrieved context.",
+          "hallucination_rate": "1 - groundedness proxy; not factual hallucination detection.",
+          "response_coherence": "Structural completeness heuristic; not semantic coherence.",
+          "relevancy_score": "Cosine similarity between binary token sets of answer and accurate_answer."
+        }
+      },
+      "counts": {
+        "correct_chunks": 12,
+        "dense_chunks": 20,
+        "bm25_chunks": 10,
+        "final_chunks": 10
+      },
+      "record_index": 1
+    },
+    {
+      "question": "list of 3 python based projects",
+      "source_file": "eval3.json",
+      "retrieval_stage_used": "final",
+      "retrieval_level": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1_score": 0.0,
+        "hit_rate": 0.0,
+        "mean_reciprocal_rank_mrr": 0.0,
+        "mean_average_precision_map": 0.0,
+        "ndcg_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "k": 5,
+        "retrieved_count": 10,
+        "relevant_count": 4159,
+        "matched_relevant_count": 0
+      },
+      "retrieval_stages": {
+        "dense": {
+          "precision": 1.0,
+          "recall": 0.004809,
+          "f1_score": 0.009572,
+          "hit_rate": 1.0,
+          "mean_reciprocal_rank_mrr": 1.0,
+          "mean_average_precision_map": 0.004809,
+          "ndcg_at_k": 1.0,
+          "precision_at_k": 1.0,
+          "recall_at_k": 0.001202,
+          "k": 5,
+          "retrieved_count": 20,
+          "relevant_count": 4159,
+          "matched_relevant_count": 20
+        },
+        "bm25": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "hit_rate": 0.0,
+          "mean_reciprocal_rank_mrr": 0.0,
+          "mean_average_precision_map": 0.0,
+          "ndcg_at_k": 0.0,
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "k": 5,
+          "retrieved_count": 10,
+          "relevant_count": 4159,
+          "matched_relevant_count": 0
+        },
+        "final": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "hit_rate": 0.0,
+          "mean_reciprocal_rank_mrr": 0.0,
+          "mean_average_precision_map": 0.0,
+          "ndcg_at_k": 0.0,
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "k": 5,
+          "retrieved_count": 10,
+          "relevant_count": 4159,
+          "matched_relevant_count": 0
+        }
+      },
+      "end_to_end": {
+        "answer_relevance": 0.054545,
+        "context_utilization": 0.78,
+        "groundedness": 0.958333,
+        "hallucination_rate": 0.041667,
+        "response_coherence": 0.875,
+        "relevancy_score": 0.094868,
+        "method": {
+          "answer_relevance": "Token-level precision/recall F1 against accurate_answer.",
+          "context_utilization": "Fraction of meaningful answer tokens also found in retrieved context.",
+          "groundedness": "Fraction of answer sentences with at least 30% meaningful-token overlap with retrieved context.",
+          "hallucination_rate": "1 - groundedness proxy; not factual hallucination detection.",
+          "response_coherence": "Structural completeness heuristic; not semantic coherence.",
+          "relevancy_score": "Cosine similarity between binary token sets of answer and accurate_answer."
+        }
+      },
+      "counts": {
+        "correct_chunks": 4159,
+        "dense_chunks": 20,
+        "bm25_chunks": 10,
+        "final_chunks": 10
+      },
+      "record_index": 1
+    },
+    {
+      "question": " \n who are mentors from django from the year 2022 to the year 2024",
+      "source_file": "eval4.json",
+      "retrieval_stage_used": "final",
+      "retrieval_level": {
+        "precision": 0.2,
+        "recall": 0.285714,
+        "f1_score": 0.235294,
+        "hit_rate": 1.0,
+        "mean_reciprocal_rank_mrr": 0.166667,
+        "mean_average_precision_map": 0.055556,
+        "ndcg_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "k": 5,
+        "retrieved_count": 10,
+        "relevant_count": 7,
+        "matched_relevant_count": 2
+      },
+      "retrieval_stages": {
+        "dense": {
+          "precision": 0.15,
+          "recall": 0.428571,
+          "f1_score": 0.222222,
+          "hit_rate": 1.0,
+          "mean_reciprocal_rank_mrr": 0.166667,
+          "mean_average_precision_map": 0.082341,
+          "ndcg_at_k": 0.0,
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "k": 5,
+          "retrieved_count": 20,
+          "relevant_count": 7,
+          "matched_relevant_count": 3
+        },
+        "bm25": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1_score": 0.0,
+          "hit_rate": 0.0,
+          "mean_reciprocal_rank_mrr": 0.0,
+          "mean_average_precision_map": 0.0,
+          "ndcg_at_k": 0.0,
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "k": 5,
+          "retrieved_count": 10,
+          "relevant_count": 7,
+          "matched_relevant_count": 0
+        },
+        "final": {
+          "precision": 0.2,
+          "recall": 0.285714,
+          "f1_score": 0.235294,
+          "hit_rate": 1.0,
+          "mean_reciprocal_rank_mrr": 0.166667,
+          "mean_average_precision_map": 0.055556,
+          "ndcg_at_k": 0.0,
+          "precision_at_k": 0.0,
+          "recall_at_k": 0.0,
+          "k": 5,
+          "retrieved_count": 10,
+          "relevant_count": 7,
+          "matched_relevant_count": 2
+        }
+      },
+      "end_to_end": {
+        "answer_relevance": 0.37037,
+        "context_utilization": 0.69697,
+        "groundedness": 1.0,
+        "hallucination_rate": 0.0,
+        "response_coherence": 0.833333,
+        "relevancy_score": 0.379869,
+        "method": {
+          "answer_relevance": "Token-level precision/recall F1 against accurate_answer.",
+          "context_utilization": "Fraction of meaningful answer tokens also found in retrieved context.",
+          "groundedness": "Fraction of answer sentences with at least 30% meaningful-token overlap with retrieved context.",
+          "hallucination_rate": "1 - groundedness proxy; not factual hallucination detection.",
+          "response_coherence": "Structural completeness heuristic; not semantic coherence.",
+          "relevancy_score": "Cosine similarity between binary token sets of answer and accurate_answer."
+        }
+      },
+      "counts": {
+        "correct_chunks": 7,
+        "dense_chunks": 20,
+        "bm25_chunks": 10,
+        "final_chunks": 10
+      },
+      "record_index": 1
+    }
+  ]
+}
