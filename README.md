@@ -58,8 +58,13 @@ source .venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
+3) Create chat_history.db
 
-3) Provide environment variables (export or set) and populate the vector store:
+```bash
+python chat_history_setup.py
+```
+
+4) Provide environment variables (export or set) and populate the vector store:
 
     Environment variables (required)
 
@@ -76,7 +81,7 @@ QDRANT_URL=https://<your-qdrant-host>
 python GSoC_Data/embeddings.py  
 ```
 
-4) Run the app
+5) Run the app
 
 ```bash
 streamlit run bot.py
