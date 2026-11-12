@@ -58,13 +58,8 @@ source .venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-3) Create chat_history.db
 
-```bash
-python chat_history_setup.py
-```
-
-4) Provide environment variables (export or set) and populate the vector store:
+3) Provide environment variables (export or set) and populate the vector store:
 
     Environment variables (required)
 
@@ -81,7 +76,7 @@ QDRANT_URL=https://<your-qdrant-host>
 python GSoC_Data/embeddings.py  
 ```
 
-5) Run the app
+4) Run the app
 
 ```bash
 streamlit run bot.py
@@ -89,13 +84,13 @@ streamlit run bot.py
 
 ## How the app works
 
-1. Loads embeddings model (`SentenceTransformerEmbeddings`) to compute vectors.
-2. Uses `QdrantVectorStore` as dense retriever (`k=20`).
-3. Uses `BM25Okapi` to compute sparse relevance scores across the Qdrant-scrolled corpus.
-4. Combines dense results with BM25 scores (hybrid rank) and formats top documents for context.
-5. Builds a strict prompt including conversation history from SQLite.
-6. Calls Google Gemini through `ChatGoogleGenerativeAI` to produce a grounded answer.
-7. Persists conversation rows in `chat_history.db`.
+1. Loads the `all-MiniLM-L6-v2` embeddings model (SentenceTransformerEmbeddings) to compute vectors.
+2. Uses `QdrantVectorStore` as a dense retriever (k=20) over the GSoC_Data1 collection.
+3. Uses `qdrant_client.query_points()` with `models.TextQuery` (limit=10) to compute scored full-text matches on the "text" payload index.
+4. Combines dense results with unique full-text matches (deduplicating by document ID) and formats all retrieved chunks into context.
+5. Builds a strict GSoC-only prompt including the last 10 turns of conversation history from SQLite.
+6. Calls Google Gemini (gemini-3.6-flash, temperature=0) through ChatGoogleGenerativeAI to produce a grounded answer.
+7. Persists conversation rows in chat_history.db and reruns the Streamlit UI to render the updated thread.
 
 ## Screenshots
 

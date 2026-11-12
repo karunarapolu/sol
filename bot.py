@@ -286,6 +286,17 @@ def format_docs(docs):
 def get_recent_history(conv_id, n=10):
     conn = sqlite3.connect("chat_history.db")
     cursor = conn.cursor()
+    cursor.execute("""
+CREATE TABLE IF NOT EXISTS chat_history (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    conversation_id TEXT,
+    title TEXT,
+    user_message TEXT NOT NULL,
+    bot_response TEXT NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+)
+""")
+
     cursor.execute(
         "SELECT user_message, bot_response FROM chat_history WHERE conversation_id=? ORDER BY id DESC LIMIT ?",
         (conv_id, n)
@@ -401,6 +412,17 @@ if user_query:
 if "conversation_id" in st.session_state:
     conn = sqlite3.connect("chat_history.db")
     cursor = conn.cursor()
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS chat_history (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        conversation_id TEXT,
+        title TEXT,
+        user_message TEXT NOT NULL,
+        bot_response TEXT NOT NULL,
+        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+    )
+    """)
+    
     cursor.execute(
         "SELECT user_message, bot_response FROM chat_history WHERE conversation_id=? ORDER BY id ASC",
         (st.session_state.conversation_id,)
